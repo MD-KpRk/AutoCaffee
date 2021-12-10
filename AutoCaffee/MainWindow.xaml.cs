@@ -22,6 +22,7 @@ namespace AutoCaffee
     {
         public MainWindow()
         {
+            // change
             InitializeComponent();
         }
     }
