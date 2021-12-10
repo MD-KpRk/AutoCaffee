@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoCaffee.Windows"
         mc:Ignorable="d"
-        Title="AuthWindow" Height="450" Width="800" MinHeight="320" MinWidth="360">
+        Title="AuthWindow" Height="450" Width="800" MinHeight="320" MinWidth="360"
+        FontFamily ="{StaticResource Roboto}">
+        
+
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -26,10 +29,16 @@
                 </Border.Effect>
 
             </Border>
-            <StackPanel Margin="7" >
-                <TextBlock Text="Авторизация" Margin="1" TextOptions.TextFormattingMode="Display" FontFamily="Yu Gothic UI" TextAlignment="Center" FontSize="22"/>
-                <TextBlock Text="Имя" Margin="10,0,0,0"/>
-                <TextBlock Text="Номер телефона" Margin="10,0,0,0"/>
+            <StackPanel Margin="10,5" >
+                <!-- Крутой аттрибут TextOptions.TextFormattingMode="Display" для округления высоты/ширины-->
+                <Label Content="Авторизация" MinHeight="40" FontSize="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                
+                <TextBlock FontSize="16" Text="Имя" />
+                <TextBox/>
+                <TextBlock FontSize="16" Text="Номер телефона" />
+                <TextBox/>
+                <TextBlock FontSize="16" Text="Пароль" />
+                <TextBox/>
 
             </StackPanel>
         </Grid>

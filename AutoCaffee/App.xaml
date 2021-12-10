@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:AutoCaffee"
              StartupUri="/Windows/MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="Roboto">pack://application:,,,/Fonts/#Roboto</FontFamily>
+
     </Application.Resources>
 </Application>
