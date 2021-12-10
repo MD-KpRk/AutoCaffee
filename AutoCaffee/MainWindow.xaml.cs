@@ -24,6 +24,7 @@ namespace AutoCaffee
         {
             // change
             InitializeComponent();
+            // hello world test 2
         }
     }
 }
