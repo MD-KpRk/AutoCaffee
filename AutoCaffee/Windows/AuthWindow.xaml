@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoCaffee.Windows"
         mc:Ignorable="d"
-        Title="AuthWindow" Height="450" Width="800" MinHeight="320" MinWidth="360"
-        FontFamily ="{StaticResource Roboto}">
+        Title="AuthWindow" Height="600" Width="600" MinHeight="330" MinWidth="360"
+        FontFamily ="{StaticResource Roboto}" WindowStartupLocation="CenterScreen">
         
 
     <Grid Background="WhiteSmoke">
@@ -23,7 +23,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="1" Grid.Row="1">
-            <Border Background="#FFF9F9F9" MinHeight="260" MinWidth="320" CornerRadius="6" >
+            <Border Background="#FFF9F9F9" MinHeight="270" MinWidth="320" CornerRadius="6" >
                 <Border.Effect>
                     <DropShadowEffect Color="#FFE0E0E0" BlurRadius="10" />
                 </Border.Effect>
@@ -39,7 +39,7 @@
                 <TextBox MaxWidth="260" MinHeight="25"/>
                 <TextBlock Margin="10,6,0,4" FontSize="16" Text="Пароль" />
                 <TextBox MaxWidth="260" MinHeight="25"/>
-
+                <Button x:Name="AuthButton" Margin="0,15,10,0" Content="Вход" FontSize="16" HorizontalAlignment="Right" MinWidth="80" MinHeight="25" BorderBrush="{x:Null}" Foreground="White" Background="#FF589DFF" />
             </StackPanel>
         </Grid>
         
