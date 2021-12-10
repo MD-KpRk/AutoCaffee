@@ -5,20 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoCaffee.Windows"
         mc:Ignorable="d"
-        Title="AuthWindow" Height="450" Width="800" MinHeight="300" MinWidth="280">
-    <Grid>
+        Title="AuthWindow" Height="450" Width="800" MinHeight="320" MinWidth="360">
+    <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="300"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
-        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="1" Grid.Row="1"/>
 
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Border Background="#FFF9F9F9" MinHeight="260" MinWidth="320" CornerRadius="6" >
+                <Border.Effect>
+                    <DropShadowEffect Color="#FFE0E0E0" BlurRadius="10" />
+                </Border.Effect>
+
+            </Border>
+            <StackPanel Margin="7" >
+                <TextBlock Text="Авторизация" Margin="1" TextOptions.TextFormattingMode="Display" FontFamily="Yu Gothic UI" TextAlignment="Center" FontSize="22"/>
+                <TextBlock Text="Имя" Margin="10,0,0,0"/>
+                <TextBlock Text="Номер телефона" Margin="10,0,0,0"/>
+
+            </StackPanel>
+        </Grid>
+        
     </Grid>
 </Window>
