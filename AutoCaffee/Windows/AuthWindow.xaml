@@ -29,16 +29,16 @@
                 </Border.Effect>
 
             </Border>
-            <StackPanel Margin="10,5" >
+            <StackPanel Margin="20,5" >
                 <!-- Крутой аттрибут TextOptions.TextFormattingMode="Display" для округления высоты/ширины-->
                 <Label Content="Авторизация" MinHeight="40" FontSize="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                 
-                <TextBlock FontSize="16" Text="Имя" />
-                <TextBox/>
-                <TextBlock FontSize="16" Text="Номер телефона" />
-                <TextBox/>
-                <TextBlock FontSize="16" Text="Пароль" />
-                <TextBox/>
+                <TextBlock Margin="10,6,0,4" FontSize="16" Text="Имя" />
+                <TextBox MaxWidth="260" MinHeight="25" />
+                <TextBlock Margin="10,6,0,4" FontSize="16" Text="Номер телефона" />
+                <TextBox MaxWidth="260" MinHeight="25"/>
+                <TextBlock Margin="10,6,0,4" FontSize="16" Text="Пароль" />
+                <TextBox MaxWidth="260" MinHeight="25"/>
 
             </StackPanel>
         </Grid>
