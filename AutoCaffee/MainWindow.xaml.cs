@@ -22,12 +22,7 @@ namespace AutoCaffee
     {
         public MainWindow()
         {
-
-
             InitializeComponent();
-
-
-            // hello world test 2
         }
     }
 }
