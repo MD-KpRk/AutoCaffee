@@ -23,5 +23,11 @@ namespace AutoCaffee.Windows
         {
             InitializeComponent();
         }
+
+        private void AuthButton_Click(object sender, RoutedEventArgs e)
+        {
+            new MainWindow(WindowState).Show();
+            Close();
+        }
     }
 }

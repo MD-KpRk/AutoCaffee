@@ -53,7 +53,7 @@
                 <TextBox x:Name="tbNumber"/>
                 <TextBlock Text="Пароль" Style="{StaticResource TextBlockStyle}"/>
                 <TextBox x:Name="tbPassword"/>
-                <Button x:Name="AuthButton" Margin="0,15,10,0" Content="Вход" FontSize="16" HorizontalAlignment="Right" MinWidth="80" MinHeight="25" BorderBrush="{x:Null}" Foreground="White" Background="#FF056CF2" />
+                <Button x:Name="AuthButton" Margin="0,15,10,0" Content="Вход" FontSize="16" HorizontalAlignment="Right" MinWidth="80" MinHeight="25" BorderBrush="{x:Null}" Foreground="White" Background="#FF056CF2" Click="AuthButton_Click" />
             </StackPanel>
         </Grid>
         
