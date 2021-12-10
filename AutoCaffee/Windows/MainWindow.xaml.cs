@@ -22,11 +22,9 @@ namespace AutoCaffee
     {
         public MainWindow()
         {
-            //dev text on devbranch (test)
-
             InitializeComponent();
 
-            // hello world test 2
+            new Windows.AuthWindow().Show();
         }
     }
 }
