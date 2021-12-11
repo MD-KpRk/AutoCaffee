@@ -17,11 +17,20 @@ namespace AutoCaffee.Windows
     /// <summary>
     /// Логика взаимодействия для AuthWindow.xaml
     /// </summary>
+
     public partial class AuthWindow : Window
     {
+
+        //public static string constring = @"Data Source=" + Environment.MachineName + @"\SQLEXPRESS" + ";Initial Catalog=BDKP;Integrated Security=True";
+        //public static string constring = @"Data Source=" + Environment.MachineName + ";Initial Catalog=BDKP;Integrated Security=True";
+        //public static string constring = @"Data Source=KPRK;Initial Catalog=AutoCaffeeBD;Integrated Security=True";
+
+
         public AuthWindow()
         {
             InitializeComponent();
+
+            MessageBox.Show(Environment.MachineName);
         }
 
         private void AuthButton_Click(object sender, RoutedEventArgs e)
