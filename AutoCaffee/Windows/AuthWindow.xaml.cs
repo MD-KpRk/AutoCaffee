@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using System.IO;
 
 namespace AutoCaffee.Windows
 {
@@ -26,8 +29,25 @@ namespace AutoCaffee.Windows
 
         private void AuthButton_Click(object sender, RoutedEventArgs e)
         {
-            new MainWindow(WindowState).Show();
-            Close();
+            var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();
+            var options = optionsBuilder.UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
+
+            using (AutoCaffeeBDContext db = new AutoCaffeeBDContext(options))
+            {
+                var dolgs2 = db.Dolgs.ToList();
+
+
+                db.Dolgs.Add(new Dolg() { Title = "Тест контекста" });
+
+
+                MessageBox.Show(db.Dolgs.Count().ToString());
+
+                foreach (Dolg d in dolgs2)
+                {
+                    MessageBox.Show($"{d.Title}");
+                }
+                db.SaveChanges();
+            }
         }
     }
 }
