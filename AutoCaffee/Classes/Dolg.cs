@@ -8,13 +8,13 @@ namespace AutoCaffee
     {
         public Dolg()
         {
-            Personals = new HashSet<Personal>();
+            //Personals = new HashSet<Personal>();
         }
         
         public int Id { get; set; }
         public string Title { get; set; }
 
-        public virtual ICollection<Personal> Personals { get; set; }
+        public List<Personal> Personals { get; set; }
 
     }
 }

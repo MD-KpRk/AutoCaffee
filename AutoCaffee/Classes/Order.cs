@@ -7,15 +7,17 @@ namespace AutoCaffee
     {
         public Order()
         {
-            Checks = new HashSet<Check>();
+            //Checks = new HashSet<Check>();
         }
 
         public int Id { get; set; }
-        public int? Idstaff { get; set; }
-        public int? Idstatus { get; set; }
+        public int PersonalId { get; set; }
+        public Personal Personal;
+        public int OrderstatusId { get; set; }
+        public Orderstatus Orderstatus;
 
-        public virtual Personal IdstaffNavigation { get; set; }
-        public virtual Orderstatus IdstatusNavigation { get; set; }
-        public virtual ICollection<Check> Checks { get; set; }
+        //public virtual Personal IdstaffNavigation { get; set; }
+        //public virtual Orderstatus IdstatusNavigation { get; set; }
+        //public virtual ICollection<Check> Checks { get; set; }
     }
 }

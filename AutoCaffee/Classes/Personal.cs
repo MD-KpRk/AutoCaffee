@@ -8,7 +8,7 @@ namespace AutoCaffee
     {
         public Personal()
         {
-            Orders = new HashSet<Order>();
+            //Orders = new HashSet<Order>();
         }
 
         public int Id { get; set; }
@@ -17,9 +17,12 @@ namespace AutoCaffee
         public string Patronymic { get; set; }
         public string Hashpass { get; set; }
         public string Phonenumber { get; set; }
-        public int? Iddolg { get; set; }
 
-        public virtual Dolg IddolgNavigation { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
+
+        public int DolgId { get; set; }
+        public Dolg Dolg;
+
+        //public virtual Dolg IddolgNavigation { get; set; }
+        //public virtual ICollection<Order> Orders { get; set; }
     }
 }

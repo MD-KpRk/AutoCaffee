@@ -17,6 +17,7 @@ using System.IO;
 using System.Windows.Media.Animation;
 using System.Threading;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace AutoCaffee.Windows
 {
@@ -51,12 +52,12 @@ namespace AutoCaffee.Windows
             backgroundWorker.RunWorkerCompleted += (s, e) =>
             {
                 errorTextBlock.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, ErrorHideAnim);
-                AuthButton.IsEnabled = true;
             };
         }
         private void ErrorHideAnim_Completed(object sender, EventArgs e)
         {
             errorTextBlock.Visibility = Visibility.Collapsed;
+            AuthButton.IsEnabled = true;
         }
 
 
@@ -64,14 +65,41 @@ namespace AutoCaffee.Windows
         {
 
             if (string.IsNullOrEmpty(tbName.Text) || string.IsNullOrEmpty(tbPassword.Text) || tbNumber.Text.Length == 1)
-                ShowError("Заполните данными все поля"); 
-            
-            
+            {
+                ShowError("Заполните данными все поля");
+                return;
+            }
+
+
+            if (!Regex.IsMatch(tbNumber.Text, @"^(\+)(\d){10,14}", RegexOptions.IgnoreCase))
+            {
+                ShowError("Некорректный номер телефона.");
+                tbNumber.Text="";
+                return;
+
+            }
+
+
+            var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();
+            var options = optionsBuilder.UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
+
+            using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(options))
+            {
+
+                //var a = bd.Personals.ToList().Find(item => item.Phonenumber == tbNumber.Text);
+
+                //if (a == null) ShowError("не найдён");
+
+
+                foreach( var a in bd.Personals)
+                {
+                    MessageBox.Show(a.Firstname);
+                }
+
+            }
 
 
             /*
-            var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();
-            var options = optionsBuilder.UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
 
             using (AutoCaffeeBDContext db = new AutoCaffeeBDContext(options))
             {
@@ -96,9 +124,6 @@ namespace AutoCaffee.Windows
         {
             if (string.IsNullOrEmpty(tbNumber.Text)) tbNumber.Text = "+";
             tbNumber.Text = "+" + tbNumber.Text.Replace("+","");
-
-
-            
         }
     }
 }
