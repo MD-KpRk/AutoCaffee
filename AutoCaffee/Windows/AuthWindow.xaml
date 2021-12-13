@@ -50,7 +50,7 @@
                 <TextBlock x:Name="errorTextBlock" Visibility="Collapsed" Text="Ошибка авторизации" TextWrapping="Wrap" FontSize="14" Foreground="Red" TextAlignment="Center"/>
 
                 <TextBlock Text="Имя" Style="{StaticResource TextBlockStyle}"/>
-                <TextBox x:Name="tbName"/>
+                <TextBox x:Name="tbName" MaxLength="29"/>
                 <TextBlock DockPanel.Dock="Right"  Text="Номер телефона" Style="{StaticResource TextBlockStyle}" />
                 <TextBox x:Name="tbNumber" Text="+" TextChanged="tbNumber_TextChanged" MaxLength="13">
                     <TextBox.ToolTip>
@@ -64,7 +64,7 @@
                     </TextBox.ToolTip>
                 </TextBox>
                 <TextBlock Text="Пароль" Style="{StaticResource TextBlockStyle}"/>
-                <TextBox x:Name="tbPassword"/>
+                <TextBox x:Name="tbPassword" MaxLength="100"/>
                 <Button x:Name="AuthButton" Margin="190,10,10,10" Content="Вход" FontSize="16" MinWidth="80" MinHeight="25" BorderBrush="{x:Null}" Foreground="White" Background="#FF056CF2" Click="AuthButton_Click" />
             </StackPanel>
         </Grid>

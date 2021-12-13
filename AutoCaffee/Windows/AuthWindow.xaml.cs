@@ -15,6 +15,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 using System.Windows.Media.Animation;
+using System.Threading;
+using System.ComponentModel;
 
 namespace AutoCaffee.Windows
 {
@@ -30,14 +32,29 @@ namespace AutoCaffee.Windows
 
         void ShowError(string Error)
         {
-            ColorAnimation ErrorAnim = new ColorAnimation(Color.FromRgb(255, 255, 255), Color.FromRgb(200, 0, 0), TimeSpan.FromSeconds(1));
+            AuthButton.IsEnabled = false;
+            errorTextBlock.Text = Error;
             errorTextBlock.Visibility = Visibility.Visible;
-            ErrorAnim.AutoReverse = true;
-            ErrorAnim.Completed += ErrorAnim_Completed;
+            ColorAnimation ErrorShowAnim = new ColorAnimation(Color.FromRgb(255, 255, 255), Color.FromRgb(200, 0, 0), TimeSpan.FromSeconds(1));
+            ErrorShowAnim.Completed += ErrorShowAnim_Completed;
             errorTextBlock.Foreground = new SolidColorBrush(Colors.Orange);
-            errorTextBlock.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, ErrorAnim);
+            errorTextBlock.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, ErrorShowAnim);
         }
-        private void ErrorAnim_Completed(object sender, EventArgs e)
+        private void ErrorShowAnim_Completed(object sender, EventArgs e)
+        {
+            ColorAnimation ErrorHideAnim = new ColorAnimation(Color.FromRgb(200, 0, 0), Color.FromRgb(255, 255, 255), TimeSpan.FromSeconds(1));
+            ErrorHideAnim.Completed += ErrorHideAnim_Completed;
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
+            backgroundWorker.RunWorkerAsync();
+
+            backgroundWorker.DoWork += (s, e) => { Thread.Sleep(TimeSpan.FromSeconds(2)); };
+            backgroundWorker.RunWorkerCompleted += (s, e) =>
+            {
+                errorTextBlock.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, ErrorHideAnim);
+                AuthButton.IsEnabled = true;
+            };
+        }
+        private void ErrorHideAnim_Completed(object sender, EventArgs e)
         {
             errorTextBlock.Visibility = Visibility.Collapsed;
         }
@@ -46,7 +63,12 @@ namespace AutoCaffee.Windows
         private void AuthButton_Click(object sender, RoutedEventArgs e)
         {
 
-            ShowError("Какая-то ошибка");
+            if (string.IsNullOrEmpty(tbName.Text) || string.IsNullOrEmpty(tbPassword.Text) || tbNumber.Text.Length == 1)
+                ShowError("Заполните данными все поля"); 
+            
+            
+
+
             /*
             var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();
             var options = optionsBuilder.UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
