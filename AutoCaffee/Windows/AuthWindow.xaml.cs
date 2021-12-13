@@ -18,6 +18,7 @@ using System.Windows.Media.Animation;
 using System.Threading;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
+using System.Security.Cryptography;
 
 namespace AutoCaffee.Windows
 {
@@ -64,7 +65,7 @@ namespace AutoCaffee.Windows
         private void AuthButton_Click(object sender, RoutedEventArgs e)
         {
 
-            if (string.IsNullOrEmpty(tbName.Text) || string.IsNullOrEmpty(tbPassword.Text) || tbNumber.Text.Length == 1)
+            if (string.IsNullOrEmpty(tbName.Text) || string.IsNullOrEmpty(tbPassword.Password) || tbNumber.Text.Length == 1)
             {
                 ShowError("Заполните данными все поля");
                 return;
@@ -78,6 +79,9 @@ namespace AutoCaffee.Windows
                 return;
 
             }
+
+
+
 
 
             var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();

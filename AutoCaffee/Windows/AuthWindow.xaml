@@ -10,12 +10,15 @@
 
 
     <Window.Resources>
-        <Style TargetType="TextBox">
+        <Style x:Key="InputStyle">
             <Setter Property="Control.MinHeight" Value="26"/>
             <Setter Property="Control.MaxWidth" Value="260"/>
             <Setter Property="TextBox.VerticalContentAlignment" Value="Center"/>
             <Setter Property="Control.FontSize" Value="14"/>
         </Style>
+
+        <Style TargetType="TextBox" BasedOn="{StaticResource InputStyle}"/>
+        <Style TargetType="PasswordBox" BasedOn="{StaticResource InputStyle}"/>
 
         <Style x:Key="TextBlockStyle">
             <Setter Property="TextBlock.Margin" Value="10,6,0,4"/>
@@ -64,7 +67,7 @@
                     </TextBox.ToolTip>
                 </TextBox>
                 <TextBlock Text="Пароль" Style="{StaticResource TextBlockStyle}"/>
-                <TextBox x:Name="tbPassword" MaxLength="100"/>
+                <PasswordBox x:Name="tbPassword" MaxLength="100"/>
                 <Button x:Name="AuthButton" Margin="190,10,10,10" Content="Вход" FontSize="16" MinWidth="80" MinHeight="25" BorderBrush="{x:Null}" Foreground="White" Background="#FF056CF2" Click="AuthButton_Click" />
             </StackPanel>
         </Grid>
