@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
+using System.Windows.Media.Animation;
 
 namespace AutoCaffee.Windows
 {
@@ -22,14 +23,30 @@ namespace AutoCaffee.Windows
     /// </summary>
     public partial class AuthWindow : Window
     {
-        
         public AuthWindow()
         {
             InitializeComponent();
         }
 
+        void ShowError(string Error)
+        {
+            ColorAnimation ErrorAnim = new ColorAnimation(Color.FromRgb(255, 255, 255), Color.FromRgb(200, 0, 0), TimeSpan.FromSeconds(1));
+            errorTextBlock.Visibility = Visibility.Visible;
+            ErrorAnim.AutoReverse = true;
+            ErrorAnim.Completed += ErrorAnim_Completed;
+            errorTextBlock.Foreground = new SolidColorBrush(Colors.Orange);
+            errorTextBlock.Foreground.BeginAnimation(SolidColorBrush.ColorProperty, ErrorAnim);
+        }
+        private void ErrorAnim_Completed(object sender, EventArgs e)
+        {
+            errorTextBlock.Visibility = Visibility.Collapsed;
+        }
+
+
         private void AuthButton_Click(object sender, RoutedEventArgs e)
         {
+
+            ShowError("Какая-то ошибка");
             /*
             var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();
             var options = optionsBuilder.UseSqlServer(ConfigurationHelper.getInstance().conString).Options;

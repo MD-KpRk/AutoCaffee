@@ -41,14 +41,14 @@
                 <Border.Effect>
                     <DropShadowEffect Color="#FFE0E0E0" BlurRadius="10" />
                 </Border.Effect>
-                
+
 
             </Border>
             <StackPanel Margin="20,5" >
                 <!-- Крутой аттрибут TextOptions.TextFormattingMode="Display" для округления высоты/ширины-->
                 <Label Content="Авторизация" MinHeight="40" FontSize="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                 <TextBlock x:Name="errorTextBlock" Visibility="Collapsed" Text="Ошибка авторизации" TextWrapping="Wrap" FontSize="14" Foreground="Red" TextAlignment="Center"/>
-                
+
                 <TextBlock Text="Имя" Style="{StaticResource TextBlockStyle}"/>
                 <TextBox x:Name="tbName"/>
                 <TextBlock DockPanel.Dock="Right"  Text="Номер телефона" Style="{StaticResource TextBlockStyle}" />
@@ -65,9 +65,9 @@
                 </TextBox>
                 <TextBlock Text="Пароль" Style="{StaticResource TextBlockStyle}"/>
                 <TextBox x:Name="tbPassword"/>
-                <Button x:Name="AuthButton" Margin="0,15,10,0" Content="Вход" FontSize="16" HorizontalAlignment="Right" MinWidth="80" MinHeight="25" BorderBrush="{x:Null}" Foreground="White" Background="#FF056CF2" Click="AuthButton_Click" />
+                <Button x:Name="AuthButton" Margin="190,10,10,10" Content="Вход" FontSize="16" MinWidth="80" MinHeight="25" BorderBrush="{x:Null}" Foreground="White" Background="#FF056CF2" Click="AuthButton_Click" />
             </StackPanel>
         </Grid>
-        
+
     </Grid>
 </Window>
