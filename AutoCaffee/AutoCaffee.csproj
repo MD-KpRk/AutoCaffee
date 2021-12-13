@@ -8,12 +8,14 @@
 
   <ItemGroup>
     <None Remove="Fonts\Roboto-Regular.ttf" />
+    <None Remove="Pictures\info.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Fonts\Roboto-Regular.ttf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Pictures\info.png" />
   </ItemGroup>
 
   <ItemGroup>

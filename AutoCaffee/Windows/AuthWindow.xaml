@@ -41,16 +41,28 @@
                 <Border.Effect>
                     <DropShadowEffect Color="#FFE0E0E0" BlurRadius="10" />
                 </Border.Effect>
+                
 
             </Border>
             <StackPanel Margin="20,5" >
                 <!-- Крутой аттрибут TextOptions.TextFormattingMode="Display" для округления высоты/ширины-->
                 <Label Content="Авторизация" MinHeight="40" FontSize="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <TextBlock x:Name="errorTextBlock" Visibility="Collapsed" Text="Ошибка авторизации" TextWrapping="Wrap" FontSize="14" Foreground="Red" TextAlignment="Center"/>
                 
                 <TextBlock Text="Имя" Style="{StaticResource TextBlockStyle}"/>
                 <TextBox x:Name="tbName"/>
-                <TextBlock Text="Номер телефона" Style="{StaticResource TextBlockStyle}" />
-                <TextBox x:Name="tbNumber"/>
+                <TextBlock DockPanel.Dock="Right"  Text="Номер телефона" Style="{StaticResource TextBlockStyle}" />
+                <TextBox x:Name="tbNumber" Text="+" TextChanged="tbNumber_TextChanged" MaxLength="13">
+                    <TextBox.ToolTip>
+                        <ToolTip Background="#D8404040" HasDropShadow="True" Placement="Relative"  VerticalOffset="25">
+                            <StackPanel Width="246">
+                                <TextBlock Foreground="White" HorizontalAlignment="Center" FontSize="14" FontFamily="Roboto">Номер телефона</TextBlock>
+                                <Separator/>
+                                <TextBlock Foreground="White" TextWrapping="Wrap" FontFamily="Roboto" >Номер телефона должен начинаться с сим- вола "+" и состоять только из цифр.</TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </TextBox.ToolTip>
+                </TextBox>
                 <TextBlock Text="Пароль" Style="{StaticResource TextBlockStyle}"/>
                 <TextBox x:Name="tbPassword"/>
                 <Button x:Name="AuthButton" Margin="0,15,10,0" Content="Вход" FontSize="16" HorizontalAlignment="Right" MinWidth="80" MinHeight="25" BorderBrush="{x:Null}" Foreground="White" Background="#FF056CF2" Click="AuthButton_Click" />

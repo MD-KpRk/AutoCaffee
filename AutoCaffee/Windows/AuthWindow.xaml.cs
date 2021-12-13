@@ -22,6 +22,7 @@ namespace AutoCaffee.Windows
     /// </summary>
     public partial class AuthWindow : Window
     {
+        
         public AuthWindow()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace AutoCaffee.Windows
 
         private void AuthButton_Click(object sender, RoutedEventArgs e)
         {
+            /*
             var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();
             var options = optionsBuilder.UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
 
@@ -48,6 +50,16 @@ namespace AutoCaffee.Windows
                 }
                 db.SaveChanges();
             }
+            */
+        }
+
+        private void tbNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbNumber.Text)) tbNumber.Text = "+";
+            tbNumber.Text = "+" + tbNumber.Text.Replace("+","");
+
+
+            
         }
     }
 }
