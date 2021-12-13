@@ -80,48 +80,42 @@ namespace AutoCaffee.Windows
 
             }
 
-
-
-
-
-            var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();
-            var options = optionsBuilder.UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
-
-            using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(options))
+            try
             {
+                var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();
+                var options = optionsBuilder.UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
 
-                //var a = bd.Personals.ToList().Find(item => item.Phonenumber == tbNumber.Text);
-
-                //if (a == null) ShowError("не найдён");
-
-
-                foreach( var a in bd.Personals)
+                using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(options))
                 {
-                    MessageBox.Show(a.Firstname);
+                    var a = bd.Personals.ToList().Find(item => item.Phonenumber == tbNumber.Text);
+                    if (a == null)
+                    {
+                        ShowError("Пользователь с таким телефоном \n не найден");
+                        return;
+                    }
+
+                    if(a.Firstname != tbName.Text)
+                    {
+                        ShowError("На данный номер телефона не зарегистрирован пользователь с таким именем.");
+                        return;
+                    }
+
+                    if(Classes.PasswordManager.stringToStringHash(tbPassword.Password) != a.Hashpass)
+                    {
+                        ShowError("Неверный пароль");
+                        return;
+                    }
+                    else
+                    {
+                        //вход
+                    }
+
                 }
-
             }
-
-
-            /*
-
-            using (AutoCaffeeBDContext db = new AutoCaffeeBDContext(options))
+            catch(Exception)
             {
-                var dolgs2 = db.Dolgs.ToList();
-
-
-                db.Dolgs.Add(new Dolg() { Title = "Тест контекста" });
-
-
-                MessageBox.Show(db.Dolgs.Count().ToString());
-
-                foreach (Dolg d in dolgs2)
-                {
-                    MessageBox.Show($"{d.Title}");
-                }
-                db.SaveChanges();
+                ShowError("Ошибка соединения с базой данных.");
             }
-            */
         }
 
         private void tbNumber_TextChanged(object sender, TextChangedEventArgs e)

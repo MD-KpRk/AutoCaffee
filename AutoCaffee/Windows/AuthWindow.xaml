@@ -50,7 +50,7 @@
             <StackPanel Margin="20,5" >
                 <!-- Крутой аттрибут TextOptions.TextFormattingMode="Display" для округления высоты/ширины-->
                 <Label Content="Авторизация" MinHeight="40" FontSize="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                <TextBlock x:Name="errorTextBlock" Visibility="Collapsed" Text="Ошибка авторизации" TextWrapping="Wrap" FontSize="14" Foreground="Red" TextAlignment="Center"/>
+                <TextBlock Width="246" x:Name="errorTextBlock" Visibility="Collapsed" Text="Ошибка авторизации" TextWrapping="Wrap" FontSize="14" Foreground="Red" TextAlignment="Center"/>
 
                 <TextBlock Text="Имя" Style="{StaticResource TextBlockStyle}"/>
                 <TextBox x:Name="tbName" MaxLength="29"/>
