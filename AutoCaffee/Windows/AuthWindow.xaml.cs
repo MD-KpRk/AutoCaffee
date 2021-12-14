@@ -123,5 +123,18 @@ namespace AutoCaffee.Windows
             if (string.IsNullOrEmpty(tbNumber.Text)) tbNumber.Text = "+";
             tbNumber.Text = "+" + tbNumber.Text.Replace("+","");
         }
+
+
+
+        //////////////////////////////////////////////////////////////////////////////
+
+        private void Button_Click(object sender, RoutedEventArgs e) ///// DEBUG BUTTON
+        {
+            new MainWindow(this.WindowState).Show();
+            Close();
+        }
+        //////////////////////////////////////////////////////////////////////////////
+
+
     }
 }
