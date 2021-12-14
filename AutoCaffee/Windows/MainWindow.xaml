@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoCaffee"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="400" Width="644"
         FontFamily ="{StaticResource Roboto}">
 
     <Window.Resources>
@@ -24,28 +24,29 @@
             </Setter>
 
             <Style.Triggers>
+                <!-- Анимация при наведении. Работает через опу
                 <Trigger Property="IsMouseOver" Value="True">
                     <Trigger.EnterActions>
                         <BeginStoryboard>
                             <Storyboard>
                                 <DoubleAnimation 
                                     Storyboard.TargetProperty="FontSize"
-                                    To="30" 
+                                    To="22" 
                                     Duration="0:0:0.1" 
                                     AutoReverse="True"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.EnterActions>
                 </Trigger>
+                -->
 
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#FF355F85"></Setter>
+                    <Setter Property="FontSize" Value="29"></Setter>
                 </Trigger>
-
             </Style.Triggers>
-
         </Style>
-
+        <!--
         <Style x:Key="CategoryButton" TargetType="Button">
 
             <Setter Property="Background" Value="{x:Null}" />
@@ -68,22 +69,50 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        -->
+
     </Window.Resources>
 
+    <DockPanel Background="WhiteSmoke" LastChildFill="True">
+        <DockPanel x:Name="TopPanel" DockPanel.Dock="Top">
+            <Button x:Name="HamButton" Style="{StaticResource b3}"  FontFamily="Segoe MDL2 Assets" FontSize="20" Content="&#xE700;" DockPanel.Dock="Left" MinHeight="40" MinWidth="40" Click="HamButton_Click"/>
+            <Border Background="Gainsboro">
+                <Label Content="Система управления рестораном" Margin="20,0,0,0" VerticalAlignment="Center" FontSize="20"/>
+            </Border>
+        </DockPanel>
+        <Grid x:Name="MainGrid">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="MenuColumn" Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Background="#FF273038" Grid.Column="0">
 
-    <Grid Background="WhiteSmoke">
+                </StackPanel>
+            </Grid>
+            <Grid x:Name="ContentGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!-- All content here-->
+            </Grid>
+        </Grid>
+    </DockPanel>
+    <!-- <Grid>
 
-        <Grid x:Name="MenuGrid">
+        <Grid x:Name="HamburgerGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="500"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Rectangle Fill="#FF273038" />
-            <Button Style="{StaticResource b3}" FontFamily="Segoe MDL2 Assets" FontSize="25" Content="&#xE700;" />
+
+            
         </Grid>
 
 
@@ -93,5 +122,6 @@
 
         </Grid>
 
-    </Grid>
+
+    </Grid> -->
 </Window>

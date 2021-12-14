@@ -20,10 +20,38 @@ namespace AutoCaffee
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool hamPanelActive;
+        public bool HamPanelActive
+        {
+            get => hamPanelActive;
+            set
+            {
+                if (hamPanelActive == false)
+                {
+                    MenuColumn.Width = new GridLength(160);
+                }
+                else
+                {
+                    MenuColumn.Width = new GridLength(40);
+                }
+                hamPanelActive = value;
+            }
+        }
+
         public MainWindow(WindowState state)
         {
             WindowState = state;
             InitializeComponent();
+        }
+
+        private void DoubleAnimation_Completed(object sender, EventArgs e)
+        {
+            (sender as Button).FontSize = 20;
+        }
+
+        private void HamButton_Click(object sender, RoutedEventArgs e)
+        {
+            HamPanelActive = !HamPanelActive;
         }
     }
 }
