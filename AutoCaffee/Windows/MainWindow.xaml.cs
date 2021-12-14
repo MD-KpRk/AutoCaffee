@@ -28,11 +28,13 @@ namespace AutoCaffee
             {
                 if (hamPanelActive == false)
                 {
-                    MenuColumn.Width = new GridLength(160);
+                    MenuColumn.Width = new GridLength(190);
+                    blackout.Visibility = Visibility.Visible;
                 }
                 else
                 {
-                    MenuColumn.Width = new GridLength(40);
+                    MenuColumn.Width = new GridLength(50);
+                    blackout.Visibility = Visibility.Hidden;
                 }
                 hamPanelActive = value;
             }
@@ -49,9 +51,16 @@ namespace AutoCaffee
             (sender as Button).FontSize = 20;
         }
 
+        //Гамбургер панель
         private void HamButton_Click(object sender, RoutedEventArgs e)
         {
             HamPanelActive = !HamPanelActive;
         }
+
+        private void blackout_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            HamPanelActive = false;
+        }
+        //
     }
 }
