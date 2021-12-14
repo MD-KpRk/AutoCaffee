@@ -36,17 +36,29 @@
         <DockPanel x:Name="TopPanel" DockPanel.Dock="Top">
             <Button x:Name="HamButton" Style="{StaticResource b3}"  FontFamily="Segoe MDL2 Assets" FontSize="20" Content="&#xE700;" DockPanel.Dock="Left" MinHeight="50" MinWidth="50" Click="HamButton_Click"/>
             <Border Background="Gainsboro">
-                <Label Content="Система управления рестораном" Margin="20,0,0,0" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Text="Система управления рестораном" Margin="20,0,0,0" VerticalAlignment="Center" FontSize="20"/>
             </Border>
         </DockPanel>
         <Grid x:Name="MainGrid">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition x:Name="MenuColumn" Width="50"/>
+                    <!-- 50px Default -->
+                    <ColumnDefinition x:Name="MenuColumn" Width="190"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Background="#FF273038" Grid.Column="0">
-                    <!-- All Buttons Here-->
+                    <!-- All Ham Buttons Here-->
+
+                    <Button x:Name="HamHome"  Style="{StaticResource b3}" HorizontalAlignment="Left" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="140"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" FontFamily="Segoe MDL2 Assets" Content="&#xE80F;" FontSize="20" MinHeight="50" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" />
+                            <Label Grid.Column="1" Margin="5,0,0,0" Content="Главная" FontSize="20" Foreground="White" VerticalContentAlignment="Center" />
+                        </Grid>
+                    </Button>
 
                 </StackPanel>
                 <Rectangle x:Name="blackout" Fill="#33000000" Grid.Column="1" Visibility="Hidden" MouseDown="blackout_MouseDown"/>
