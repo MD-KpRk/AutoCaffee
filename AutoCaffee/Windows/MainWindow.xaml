@@ -9,52 +9,43 @@
         FontFamily ="{StaticResource Roboto}">
 
     <Window.Resources>
-        <Style TargetType="Button" x:Key="Button_Command">
-            <Setter Property="Foreground" Value="#a0a0a0"/>
+        <Style x:Key="b3" TargetType="Button">
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="Background" Value="#FF273038"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="ButtonBackground" BorderBrush="#909090">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <Border.BorderThickness>0</Border.BorderThickness>
-                            <Border.CornerRadius>2</Border.CornerRadius>
-                            <Border.Background>
-                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="#e0e0e0" Offset="0" />
-                                    <GradientStop Color="#808080" Offset="1" />
-                                </LinearGradientBrush>
-                            </Border.Background>
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="ButtonBackground" Property="Background">
-                                    <Setter.Value>
-                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" >
-                                            <GradientStop Color="#f0f0f0" Offset="0" />
-                                            <GradientStop Color="#c0c0c0" Offset="0.81" />
-                                            <GradientStop Color="#d50101" Offset="0.81" />
-                                            <GradientStop Color="#f50101" Offset="1" />
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="ButtonBackground" Property="Background">
-                                    <Setter.Value>
-                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" >
-                                            <GradientStop Color="#f0f0f0" Offset="0" />
-                                            <GradientStop Color="#c0c0c0" Offset="0.75" />
-                                            <GradientStop Color="#d50101" Offset="0.75" />
-                                            <GradientStop Color="#f50101" Offset="1" />
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation 
+                                    Storyboard.TargetProperty="FontSize"
+                                    To="30" 
+                                    Duration="0:0:0.1" 
+                                    AutoReverse="True"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                </Trigger>
+
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF355F85"></Setter>
+                </Trigger>
+
+            </Style.Triggers>
+
         </Style>
+
         <Style x:Key="CategoryButton" TargetType="Button">
 
             <Setter Property="Background" Value="{x:Null}" />
@@ -64,7 +55,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Background="{TemplateBinding Background}"  >
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto"/>
+                            <ContentPresenter Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
@@ -83,20 +74,22 @@
     <Grid Background="WhiteSmoke">
 
         <Grid x:Name="MenuGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Background="#FF273038" Grid.Column="0">
-
-                <!--<Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" FontSize="30" Content="&#xE700;" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}"></Button> -->
-                <Button Style="{StaticResource CategoryButton}" FontFamily="Segoe MDL2 Assets" FontSize="30" MinHeight="40" Content="&#xE700;" />
-            </StackPanel>
-
+            <Rectangle Fill="#FF273038" />
+            <Button Style="{StaticResource b3}" FontFamily="Segoe MDL2 Assets" FontSize="25" Content="&#xE700;" />
         </Grid>
 
+
+
         <Grid x:Name="ContentGrid">
-            
+
 
         </Grid>
 
