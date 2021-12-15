@@ -44,6 +44,7 @@ namespace AutoCaffee
         {
             WindowState = state;
             InitializeComponent();
+            MainFrame.Navigate(new Pages.home());
         }
 
         private void DoubleAnimation_Completed(object sender, EventArgs e)
@@ -51,7 +52,7 @@ namespace AutoCaffee
             (sender as Button).FontSize = 20;
         }
 
-        //Гамбургер панель
+        //////////////////////////////// Гамбургер панель
         private void HamButton_Click(object sender, RoutedEventArgs e)
         {
             HamPanelActive = !HamPanelActive;
@@ -61,6 +62,12 @@ namespace AutoCaffee
         {
             HamPanelActive = false;
         }
-        //
+
+        private void HamHome_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pages.home());
+        }
+
+        ////////////////////////////////
     }
 }

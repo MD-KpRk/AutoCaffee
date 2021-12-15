@@ -87,20 +87,22 @@ namespace AutoCaffee.Windows
 
                 using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(options))
                 {
-                    var a = bd.Personals.ToList().Find(item => item.Phonenumber == tbNumber.Text);
-                    if (a == null)
+
+                    Personal User = bd.Personals.Where(us => us.Phonenumber == tbNumber.Text).FirstOrDefault();
+
+                    if (User == null)
                     {
                         ShowError("Пользователь с таким телефоном \n не найден");
                         return;
                     }
 
-                    if(a.Firstname != tbName.Text)
+                    if(User.Firstname != tbName.Text)
                     {
                         ShowError("На данный номер телефона не зарегистрирован пользователь с таким именем.");
                         return;
                     }
 
-                    if(Classes.PasswordManager.stringToStringHash(tbPassword.Password) != a.Hashpass)
+                    if(Classes.PasswordManager.stringToStringHash(tbPassword.Password) != User.Hashpass)
                     {
                         ShowError("Неверный пароль");
                         return;
@@ -108,13 +110,15 @@ namespace AutoCaffee.Windows
                     else
                     {
                         //вход
+                        new MainWindow(this.WindowState).Show();
+                        Close();
                     }
 
                 }
             }
             catch(Exception)
             {
-                ShowError("Ошибка соединения с базой данных.");
+                ShowError("Ошибка соединения с базой данных");
             }
         }
 

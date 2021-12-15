@@ -6,9 +6,20 @@
       xmlns:local="clr-namespace:AutoCaffee.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="home">
+      Title="home"
+      FontFamily ="{StaticResource Roboto}">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="65*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Добро пожаловать в систему управления рестораном" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" />
+        <Separator Grid.Row="2" Margin="0,2,0,2" />
+        <TextBlock x:Name="UserLabel" Grid.Row="3" TextWrapping="Wrap" Text="Вы авторизированы как: " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" />
+
     </Grid>
 </Page>
