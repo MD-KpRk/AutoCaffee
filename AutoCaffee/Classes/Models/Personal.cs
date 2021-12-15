@@ -20,6 +20,8 @@ namespace AutoCaffee
 
         public int DolgId { get; set; }
         public Dolg Dolg { get; set; }
+        public int RolId { get; set; }
+        public Rol Rol { get; set; }
 
     }
 }

@@ -44,12 +44,14 @@ namespace AutoCaffee
             WindowState = state;
             InitializeComponent();
 
-            var options = new DbContextOptionsBuilder<AutoCaffeeBDContext>().UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
+            currentUser = user;
 
-            using (AutoCaffeeBDContext db = new AutoCaffeeBDContext(options))
-            {
-                currentUser = db.Personals.Include(u => u.Dolg).Where(item => item.Id == user.Id).First();
-            }
+            //var options = new DbContextOptionsBuilder<AutoCaffeeBDContext>().UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
+
+            //using (AutoCaffeeBDContext db = new AutoCaffeeBDContext(options))
+            //{
+            //    currentUser = db.Personals.Include(u => u.Dolg).Where(item => item.Id == user.Id).First();
+            //}
 
 
             MainFrame.Navigate(new Pages.home(currentUser));

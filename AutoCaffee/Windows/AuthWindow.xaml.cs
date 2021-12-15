@@ -88,7 +88,7 @@ namespace AutoCaffee.Windows
                 using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(options))
                 {
 
-                    Personal User = bd.Personals.Where(us => us.Phonenumber == tbNumber.Text).FirstOrDefault();
+                    Personal User = bd.Personals.Include(u => u.Dolg).Include(item => item.Rol).Where(us => us.Phonenumber == tbNumber.Text).FirstOrDefault();
 
                     if (User == null)
                     {
@@ -137,9 +137,13 @@ namespace AutoCaffee.Windows
             var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();
             var options = optionsBuilder.UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
 
+
+
             using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(options))
             {
-                new MainWindow(WindowState, bd.Personals.Where(us => us.Id == 1).FirstOrDefault()).Show();
+                Personal User = bd.Personals.Include(u => u.Dolg).Include(item => item.Rol).Where(us => us.Id == 1).FirstOrDefault();
+
+                new MainWindow(WindowState, User).Show();
                 Close();
             }
             //////////////////////////////////////////////////////////////////////////////

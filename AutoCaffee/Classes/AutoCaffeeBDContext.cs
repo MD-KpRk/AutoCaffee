@@ -16,6 +16,7 @@ namespace AutoCaffee
         }
 
         public DbSet<Check> Checks { get; set; }
+        public DbSet<Rol> Rols { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Dish> Dishes { get; set; }
         public DbSet<Dolg> Dolgs { get; set; }

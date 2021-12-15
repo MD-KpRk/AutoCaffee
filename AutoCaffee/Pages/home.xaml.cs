@@ -24,19 +24,10 @@ namespace AutoCaffee.Pages
         public home(Personal User)
         {
             InitializeComponent();
-            UserLabel.Text =  UserLabel.Text+" " + User.Firstname + " " + User.Secondname;
+            UserLabel.Text =  UserLabel.Text+" " + User.Firstname + " " + User.Secondname + "\nВаша должность: " + User.Dolg?.Title;
 
-            var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();
-            var options = optionsBuilder.UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
+            UserRole.Text = UserRole.Text + " " + User.Rol?.Title;
 
-            try
-            {
-                UserLabel.Text = UserLabel.Text + "\nВаша должность: " + User.Dolg?.Title;
-            }
-            catch (Exception)
-            {
-                UserLabel.Text = UserLabel.Text + "\nВаша должность: Ошибка загрузки";
-            }
         }
 
         private void RichTextBox_SelectionChanged(object sender, RoutedEventArgs e)
