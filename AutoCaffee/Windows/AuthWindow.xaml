@@ -44,8 +44,6 @@
                 <Border.Effect>
                     <DropShadowEffect Color="#FFE0E0E0" BlurRadius="10" />
                 </Border.Effect>
-
-
             </Border>
             <StackPanel Margin="20,5" >
                 <!-- Крутой аттрибут TextOptions.TextFormattingMode="Display" для округления высоты/ширины-->

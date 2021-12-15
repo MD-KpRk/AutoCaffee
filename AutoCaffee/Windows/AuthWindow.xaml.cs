@@ -110,7 +110,7 @@ namespace AutoCaffee.Windows
                     else
                     {
                         //вход
-                        new MainWindow(this.WindowState).Show();
+                        new MainWindow(WindowState, User).Show();
                         Close();
                     }
 
@@ -134,11 +134,16 @@ namespace AutoCaffee.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e) ///// DEBUG BUTTON
         {
-            new MainWindow(this.WindowState).Show();
-            Close();
-        }
-        //////////////////////////////////////////////////////////////////////////////
+            var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();
+            var options = optionsBuilder.UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
 
+            using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(options))
+            {
+                new MainWindow(WindowState, bd.Personals.Where(us => us.Id == 1).FirstOrDefault()).Show();
+                Close();
+            }
+            //////////////////////////////////////////////////////////////////////////////
+        }
 
     }
 }

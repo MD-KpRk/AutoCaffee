@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoCaffee
 {
@@ -18,11 +18,8 @@ namespace AutoCaffee
         public string Hashpass { get; set; }
         public string Phonenumber { get; set; }
 
-
         public int DolgId { get; set; }
-        public Dolg Dolg;
+        public Dolg Dolg { get; set; }
 
-        //public virtual Dolg IddolgNavigation { get; set; }
-        //public virtual ICollection<Order> Orders { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,26 @@ namespace AutoCaffee.Pages
     /// </summary>
     public partial class home : Page
     {
-        public home()
+        public home(Personal User)
         {
             InitializeComponent();
+            UserLabel.Text =  UserLabel.Text+" " + User.Firstname + " " + User.Secondname;
+
+            var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();
+            var options = optionsBuilder.UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
+
+            try
+            {
+                UserLabel.Text = UserLabel.Text + "\nВаша должность: " + User.Dolg?.Title;
+            }
+            catch (Exception)
+            {
+                UserLabel.Text = UserLabel.Text + "\nВаша должность: Ошибка загрузки";
+            }
+        }
+
+        private void RichTextBox_SelectionChanged(object sender, RoutedEventArgs e)
+        {
         }
     }
 }
