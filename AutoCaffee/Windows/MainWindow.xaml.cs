@@ -43,17 +43,7 @@ namespace AutoCaffee
         {
             WindowState = state;
             InitializeComponent();
-
             currentUser = user;
-
-            //var options = new DbContextOptionsBuilder<AutoCaffeeBDContext>().UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
-
-            //using (AutoCaffeeBDContext db = new AutoCaffeeBDContext(options))
-            //{
-            //    currentUser = db.Personals.Include(u => u.Dolg).Where(item => item.Id == user.Id).First();
-            //}
-
-
             MainFrame.Navigate(new Pages.home(currentUser));
         }
 
