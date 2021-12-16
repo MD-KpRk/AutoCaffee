@@ -68,6 +68,7 @@ namespace AutoCaffee
         {
             HamPanelActive = false;
 
+
         }
 
 
