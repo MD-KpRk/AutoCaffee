@@ -56,10 +56,73 @@
                                 <ColumnDefinition Width="140"/>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" FontFamily="Segoe MDL2 Assets" Content="&#xE80F;" FontSize="20" MinHeight="50" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" />
-                            <Label Grid.Column="1" Margin="5,0,0,0" Content="Главная" FontSize="20" Foreground="White" VerticalContentAlignment="Center" />
+                            <Label Grid.Column="1" Margin="5,0,0,0" Content="Главная" FontSize="18" Foreground="White" VerticalContentAlignment="Center" />
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="HamBD"  Style="{StaticResource b3}" HorizontalAlignment="Left" Click="HamBD_Click" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="140"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Margin="1,0,0,0" FontFamily="Segoe MDL2 Assets" Content="&#xE82D;" FontSize="20" MinHeight="50" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" />
+                            <Label Grid.Column="1" Margin="5,0,0,0" Content="База данных" FontSize="18" Foreground="White" VerticalContentAlignment="Center" />
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="HamRole"  Style="{StaticResource b3}" HorizontalAlignment="Left" Click="HamBD_Click" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="140"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" FontFamily="Segoe MDL2 Assets" Content="&#xE7EF;" FontSize="20" MinHeight="50" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" />
+                            <Label Grid.Column="1" Margin="5,0,0,0" Content="Роли" FontSize="18" Foreground="White" VerticalContentAlignment="Center" />
+                        </Grid>
+                    </Button>
+                    <Button x:Name="HamPersonal"  Style="{StaticResource b3}" HorizontalAlignment="Left" Click="HamBD_Click" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="140"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" FontFamily="Segoe MDL2 Assets" Content="&#xE716;" FontSize="20" MinHeight="50" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" />
+                            <Label Grid.Column="1" Margin="5,0,0,0" Content="Персонал" FontSize="18" Foreground="White" VerticalContentAlignment="Center" />
+                        </Grid>
+                    </Button>
+                    <Button x:Name="HamOrder"  Style="{StaticResource b3}" HorizontalAlignment="Left" Click="HamBD_Click" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="140"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" FontFamily="Segoe MDL2 Assets" Content="&#xE718;" FontSize="20" MinHeight="50" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" />
+                            <Label Grid.Column="1" Margin="5,0,0,0" Content="Заказы" FontSize="18" Foreground="White" VerticalContentAlignment="Center" />
                         </Grid>
                     </Button>
                     
+                    <Button x:Name="HamDish"  Style="{StaticResource b3}" HorizontalAlignment="Left" Click="HamBD_Click" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="140"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" FontFamily="Segoe MDL2 Assets" Content="&#xED56;" FontSize="20" MinHeight="50" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" />
+                            <Label Grid.Column="1" Margin="5,0,0,0" Content="Блюда" FontSize="18" Foreground="White" VerticalContentAlignment="Center" />
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="HamLogOut"  Style="{StaticResource b3}" HorizontalAlignment="Left" Click="HamBD_Click" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="140"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" FontFamily="Segoe MDL2 Assets" Content="&#xF3B1;" FontSize="20" MinHeight="50" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" />
+                            <Label Grid.Column="1" Margin="5,0,0,0" Content="Выход" FontSize="18" Foreground="White" VerticalContentAlignment="Center" />
+                        </Grid>
+                    </Button>
 
                 </StackPanel>
                 <Rectangle x:Name="blackout" Fill="#33000000" Grid.Column="1" Visibility="Hidden" MouseDown="blackout_MouseDown"/>

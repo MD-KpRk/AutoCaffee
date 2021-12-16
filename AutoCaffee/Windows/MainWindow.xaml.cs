@@ -65,7 +65,13 @@ namespace AutoCaffee
 
         private void HamHome_Click(object sender, RoutedEventArgs e)
         {
+            HamPanelActive = false;
             MainFrame.Navigate(new Pages.home(currentUser));
+        }
+
+        private void HamBD_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         ////////////////////////////////
