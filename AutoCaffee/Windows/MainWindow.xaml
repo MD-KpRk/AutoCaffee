@@ -71,7 +71,7 @@
                         </Grid>
                     </Button>
 
-                    <Button x:Name="HamRole"  Style="{StaticResource b3}" HorizontalAlignment="Left" Click="HamBD_Click" >
+                    <Button x:Name="HamRole"  Style="{StaticResource b3}" HorizontalAlignment="Left" Click="HamRole_Click">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50"/>
@@ -81,7 +81,7 @@
                             <Label Grid.Column="1" Margin="5,0,0,0" Content="Роли" FontSize="18" Foreground="White" VerticalContentAlignment="Center" />
                         </Grid>
                     </Button>
-                    <Button x:Name="HamPersonal"  Style="{StaticResource b3}" HorizontalAlignment="Left" Click="HamBD_Click" >
+                    <Button x:Name="HamPersonal"  Style="{StaticResource b3}" HorizontalAlignment="Left" Click="HamPersonal_Click" >
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50"/>
@@ -91,7 +91,7 @@
                             <Label Grid.Column="1" Margin="5,0,0,0" Content="Персонал" FontSize="18" Foreground="White" VerticalContentAlignment="Center" />
                         </Grid>
                     </Button>
-                    <Button x:Name="HamOrder"  Style="{StaticResource b3}" HorizontalAlignment="Left" Click="HamBD_Click" >
+                    <Button x:Name="HamOrder"  Style="{StaticResource b3}" HorizontalAlignment="Left" Click="HamOrder_Click" >
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50"/>
@@ -102,7 +102,7 @@
                         </Grid>
                     </Button>
                     
-                    <Button x:Name="HamDish"  Style="{StaticResource b3}" HorizontalAlignment="Left" Click="HamBD_Click" >
+                    <Button x:Name="HamDish"  Style="{StaticResource b3}" HorizontalAlignment="Left" Click="HamDish_Click" >
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50"/>
@@ -113,7 +113,7 @@
                         </Grid>
                     </Button>
 
-                    <Button x:Name="HamLogOut"  Style="{StaticResource b3}" HorizontalAlignment="Left" Click="HamBD_Click" >
+                    <Button x:Name="HamLogOut"  Style="{StaticResource b3}" HorizontalAlignment="Left" Click="HamLogOut_Click" >
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50"/>

@@ -25,7 +25,7 @@ namespace AutoCaffee
             get => hamPanelActive;
             set
             {
-                if (hamPanelActive == false)
+                if (value == true)
                 {
                     MenuColumn.Width = new GridLength(190);
                     blackout.Visibility = Visibility.Visible;
@@ -73,5 +73,40 @@ namespace AutoCaffee
 
 
         #endregion
+
+        private void HamRole_Click(object sender, RoutedEventArgs e) // Роли
+        {
+            HamPanelActive = false;
+
+        }
+
+        private void HamPersonal_Click(object sender, RoutedEventArgs e) // Персонал
+        {
+            HamPanelActive = false;
+
+        }
+
+        private void HamOrder_Click(object sender, RoutedEventArgs e) // Заказы
+        {
+            HamPanelActive = false;
+
+        }
+
+        private void HamDish_Click(object sender, RoutedEventArgs e) // Блюда
+        {
+            HamPanelActive = false;
+
+        }
+
+        private void HamLogOut_Click(object sender, RoutedEventArgs e) // Выход
+        {
+            HamPanelActive = false;
+
+            if (MessageBox.Show("Вы желаете вернуться к окну авторизации ?", "Выход из системы", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                new AuthWindow().Show();
+                Close();
+            }
+        }
     }
 }

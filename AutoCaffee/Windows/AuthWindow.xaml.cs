@@ -20,7 +20,7 @@ using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
 
-namespace AutoCaffee.Windows
+namespace AutoCaffee
 {
     /// <summary>
     /// Логика взаимодействия для AuthWindow.xaml
