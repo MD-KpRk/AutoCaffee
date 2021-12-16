@@ -16,6 +16,7 @@ namespace AutoCaffee.Pages
             RoleCheck(userRole.CanRole, lb2);
             RoleCheck(userRole.CanPersonal, lb3);
             RoleCheck(userRole.CanOrder, lb4);
+            RoleCheck(userRole.CanFood, lb5);
         }
 
         void RoleCheck(bool boolean, TextBlock tb)

@@ -45,6 +45,8 @@
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="6"/>
                                 <RowDefinition Height="20"/>
+                                <RowDefinition Height="6"/>
+                                <RowDefinition Height="20"/>
                             </Grid.RowDefinitions>
 
                             <TextBlock x:Name="lb1" FontFamily="Segoe MDL2 Assets" Text="&#xE711;" Margin="0,2,0,0" Grid.Row="0" Grid.Column="0" FontSize="14" TextAlignment="Center" />
@@ -59,6 +61,9 @@
                             <TextBlock x:Name="lb4" FontFamily="Segoe MDL2 Assets" Text="&#xE711;" Margin="0,2,0,0" Grid.Column="0" Grid.Row="6" FontSize="15" TextAlignment="Center" />
                             <TextBlock Text="Управление заказами" Grid.Column="1" Grid.Row="6" FontSize="15"  />
 
+                            <TextBlock x:Name="lb5" FontFamily="Segoe MDL2 Assets" Text="&#xE711;" Margin="0,2,0,0" Grid.Column="0" Grid.Row="8" FontSize="15" TextAlignment="Center" />
+                            <TextBlock Text="Управление ассортиментом блюд" Grid.Column="1" Grid.Row="8" FontSize="15"  />
+                            
                         </Grid>
                     </StackPanel>
                 </Grid>

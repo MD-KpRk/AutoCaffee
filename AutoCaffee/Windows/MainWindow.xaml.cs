@@ -52,28 +52,26 @@ namespace AutoCaffee
             (sender as Button).FontSize = 20;
         }
 
-        //////////////////////////////// Гамбургер панель
-        private void HamButton_Click(object sender, RoutedEventArgs e)
-        {
-            HamPanelActive = !HamPanelActive;
-        }
+        #region Hamburger Panel
 
-        private void blackout_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            HamPanelActive = false;
-        }
+        private void HamButton_Click(object sender, RoutedEventArgs e) => HamPanelActive = !HamPanelActive;
 
-        private void HamHome_Click(object sender, RoutedEventArgs e)
+        private void blackout_MouseDown(object sender, MouseButtonEventArgs e) => HamPanelActive = false;
+
+        private void HamHome_Click(object sender, RoutedEventArgs e) // Главная
         {
             HamPanelActive = false;
             MainFrame.Navigate(new Pages.home(currentUser));
         }
 
-        private void HamBD_Click(object sender, RoutedEventArgs e)
+        private void HamBD_Click(object sender, RoutedEventArgs e) // База данных
         {
+            HamPanelActive = false;
 
         }
 
-        ////////////////////////////////
+
+
+        #endregion
     }
 }

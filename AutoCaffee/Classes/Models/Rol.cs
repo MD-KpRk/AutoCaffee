@@ -15,5 +15,6 @@ namespace AutoCaffee
         public bool CanRole { get; set; }
         public bool CanPersonal { get; set; }
         public bool CanOrder { get; set; }
+        public bool CanFood { get; set; }
     }
 }
