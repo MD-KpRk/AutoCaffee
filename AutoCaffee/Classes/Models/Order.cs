@@ -1,23 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AutoCaffee
 {
     public class Order : IComparable
     {
-        [ColumnName("Номер")]
-        public int Id { get; set; }
-        public int PersonalId { get; set; }
-        public Personal Personal;
 
-        public int OrderstatusId { get; set; }
-        public Orderstatus Orderstatus;
+        [ColumnName("Номер")]
+        [Key]
+        public int Id { get; set; }
+
+        [Visible(false)]
+        public int? PersonalId { get; set; }
+
+        [ColumnName("Сотрудник")]
+        public Personal Personal { get; set; }
+
+        [Visible(false)]
+        public int? OrderstatusId { get; set; }
+
+        [ColumnName("Состояние")]
+        public Orderstatus Orderstatus { get; set; }
 
         public override string ToString() => Id.ToString();
         public int CompareTo(object obj) => Id.CompareTo(Convert.ToInt32(obj as string));
 
-        //public virtual Personal IdstaffNavigation { get; set; }
-        //public virtual Orderstatus IdstatusNavigation { get; set; }
-        //public virtual ICollection<Check> Checks { get; set; }
+        //[Visible(false)]
+        public List<Orderstring> Orderstrings { get; set; } = new List<Orderstring>();
+
+        [Visible(false)]
+        public List<Check> Checks { get; set; } = new List<Check>();
     }
+
+
+    public class OrderStringCollection : List<Orderstring>
+    {
+        public override string ToString()
+        {
+            return string.Join(", ", this);
+        }
+        public string ToString(string Separator)
+        {
+            return string.Join(Separator, this);
+        }
+    }
+
 }

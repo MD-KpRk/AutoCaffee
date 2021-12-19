@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,30 +58,55 @@ namespace AutoCaffee.Pages
             ComboBox cb = sender as ComboBox;
             var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();
             var options = optionsBuilder.UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
+            int number = (cb.SelectedItem as ListObject).number;
             using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(options))
             {
-                int number = (cb.SelectedItem as ListObject).number;
                 if (number == 1)
                 {
-                    //dg.ItemsSource = bd.Clients.Include(c => c.Checks).ToList();
-                    dg.ItemsSource = bd.Personals.ToList();
+                    dg.ItemsSource = bd.Personals.Include(item => item.Dolg).Include(item => item.Rol).ToList();
                 }
-                if (number == 2)
+                else if (number == 2)
                 {
                     dg.ItemsSource = bd.Dolgs.ToList();
                 }
-                if (number == 3)
+                else if(number == 3)
                 {
                     dg.ItemsSource = bd.Rols.ToList();
                 }
-                if (number == 4)
+                else if(number == 4)
                 {
                     dg.ItemsSource = bd.Dishes.ToList();
                 }
-                if (number == 5)
+                else if(number == 5)
                 {
                     dg.ItemsSource = bd.Orderstrings.Include(item => item.Dish).Include(item2 => item2.Order).ToList();
                 }
+                else if(number == 6)
+                {
+                    dg.ItemsSource = bd.Orders.Include(item=>item.Orderstatus).Include(item=>item.Personal).ToList();
+
+                    bd.Orderstrings.Include(item => item.Dish).Include(item2 => item2.Order).ToList();
+
+                    foreach(var a in bd.Orders.Where(it => it.Id == 1).ToList().FirstOrDefault().Orderstrings)
+                    {
+                        Debug.WriteLine(a.Dish);
+                    }
+                    // сделать норм вывод коллекции или кнопку подробнее потом запилить
+
+                }
+                else if(number == 7)
+                {
+                    
+                }
+                else if(number == 8)
+                {
+
+                }
+                else if(number == 9)
+                {
+
+                }
+
             }
         }
 

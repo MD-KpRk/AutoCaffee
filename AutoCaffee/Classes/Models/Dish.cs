@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AutoCaffee
 {
     public partial class Dish : IComparable
     {
         [Visible(false)]
+        [Key]
         public int Id { get; set; }
         [ColumnName("Наименование")]
         public string Title { get; set; }

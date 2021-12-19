@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AutoCaffee
 {
     public partial class Check : IComparable
     {
-        //номер чека - выходная инфа в тустринг
+
+        [Key]
         public int Id { get; set; }
         public float Totalsum { get; set; }
         public DateTime Date { get; set; }

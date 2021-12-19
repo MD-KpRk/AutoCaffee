@@ -7,6 +7,7 @@ namespace AutoCaffee
     public partial class Dolg : IComparable
     {
         [Visible(false)]
+        [Key]
         public int Id { get; set; }
         [ColumnName("Наименование")]
         public string Title { get; set; }
