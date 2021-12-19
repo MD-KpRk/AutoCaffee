@@ -3,23 +3,18 @@ using System.Collections.Generic;
 
 namespace AutoCaffee
 {
-    public partial class Order
+    public class Order : IComparable
     {
-        public Order()
-        {
-            //Checks = new HashSet<Check>();
-        }
-
+        [ColumnName("Номер")]
         public int Id { get; set; }
         public int PersonalId { get; set; }
         public Personal Personal;
+
         public int OrderstatusId { get; set; }
         public Orderstatus Orderstatus;
 
-        public override string ToString()
-        {
-            return Id.ToString();
-        }
+        public override string ToString() => Id.ToString();
+        public int CompareTo(object obj) => Id.CompareTo(Convert.ToInt32(obj as string));
 
         //public virtual Personal IdstaffNavigation { get; set; }
         //public virtual Orderstatus IdstatusNavigation { get; set; }

@@ -63,7 +63,7 @@ namespace AutoCaffee.Pages
                 if (number == 1)
                 {
                     //dg.ItemsSource = bd.Clients.Include(c => c.Checks).ToList();
-                    dg.ItemsSource = bd.Clients.ToList();
+                    dg.ItemsSource = bd.Personals.ToList();
                 }
                 if (number == 2)
                 {

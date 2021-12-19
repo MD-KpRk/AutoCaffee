@@ -4,13 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoCaffee
 {
-    public partial class Personal
+    public partial class Personal : IComparable
     {
-        public Personal()
-        {
-            //Orders = new HashSet<Order>();
-        }
-
         public int Id { get; set; }
         public string Firstname { get; set; }
         public string Secondname { get; set; }
@@ -22,6 +17,9 @@ namespace AutoCaffee
         public Dolg Dolg { get; set; }
         public int RolId { get; set; }
         public Rol Rol { get; set; }
+
+        public int CompareTo(object obj) => Firstname.CompareTo(obj.ToString());
+        public override string ToString() => Firstname;
 
     }
 }

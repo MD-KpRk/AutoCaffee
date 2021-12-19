@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AutoCaffee
 {
-    public partial class Dolg
+    public partial class Dolg : IComparable
     {
         [Visible(false)]
         public int Id { get; set; }
@@ -14,5 +14,7 @@ namespace AutoCaffee
         [Visible(false)]
         public List<Personal> Personals { get; set; }
 
+        public int CompareTo(object obj) => Title.CompareTo(obj);
+        public override string ToString() => Title;
     }
 }
