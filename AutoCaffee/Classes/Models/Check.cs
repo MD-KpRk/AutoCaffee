@@ -7,8 +7,7 @@ namespace AutoCaffee
     {
         public int Id { get; set; }
         public float Totalsum { get; set; }
-
-#warning Сюда вставить дату
+        public DateTime Date { get; set; }
 
         public int OrderId { get; set; }
         public Order Order;

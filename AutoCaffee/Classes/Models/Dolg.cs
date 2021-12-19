@@ -6,14 +6,12 @@ namespace AutoCaffee
 {
     public partial class Dolg
     {
-        public Dolg()
-        {
-            //Personals = new HashSet<Personal>();
-        }
-        
+        [Visible(false)]
         public int Id { get; set; }
+        [ColumnName("Наименование")]
         public string Title { get; set; }
 
+        [Visible(false)]
         public List<Personal> Personals { get; set; }
 
     }

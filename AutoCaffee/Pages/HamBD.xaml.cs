@@ -59,12 +59,15 @@ namespace AutoCaffee.Pages
             var options = optionsBuilder.UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
             using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(options))
             {
-                if ((cb.SelectedItem as ListObject).number == 1)
+                int number = (cb.SelectedItem as ListObject).number;
+                if (number == 1)
                 {
-
+                    //dg.ItemsSource = bd.Clients.Include(c => c.Checks).ToList();
                     dg.ItemsSource = bd.Clients.ToList();
-
-
+                }
+                if (number == 2)
+                {
+                    dg.ItemsSource = bd.Dolgs.ToList();
                 }
             }
         }

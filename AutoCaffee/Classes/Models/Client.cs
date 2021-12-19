@@ -7,10 +7,10 @@ namespace AutoCaffee
     {
         [Visible(false)]
         public int Id { get; set; }
-        [ColumnName("Имя")]
+        [ColumnName("Имя клиента")]
         public string Name { get; set; }
 
-        [Visible(false)]
+        [Visible(true)]
         public List<Check> Checks { get; set; }
     }
 }
