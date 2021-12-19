@@ -64,60 +64,39 @@ namespace AutoCaffee
 
         private void AuthButton_Click(object sender, RoutedEventArgs e)
         {
-
-            if (string.IsNullOrEmpty(tbName.Text) || string.IsNullOrEmpty(tbPassword.Password) || tbNumber.Text.Length == 1)
-            {
+            if (string.IsNullOrEmpty(tbName.Text) || string.IsNullOrEmpty(tbPassword.Password) || tbNumber.Text.Length == 1){
                 ShowError("Заполните данными все поля");
                 return;
             }
-
-
-            if (!Regex.IsMatch(tbNumber.Text, @"^(\+)(\d){10,14}", RegexOptions.IgnoreCase))
-            {
+            if (!Regex.IsMatch(tbNumber.Text, @"^(\+)(\d){10,14}", RegexOptions.IgnoreCase)){
                 ShowError("Некорректный номер телефона.");
                 tbNumber.Text="";
                 return;
-
             }
-
-            try
-            {
+            try{
                 var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();
                 var options = optionsBuilder.UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
-
-                using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(options))
-                {
-
+                using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(options)){
                     Personal User = bd.Personals.Include(u => u.Dolg).Include(item => item.Rol).Where(us => us.Phonenumber == tbNumber.Text).FirstOrDefault();
-
-                    if (User == null)
-                    {
+                    if (User == null){
                         ShowError("Пользователь с таким телефоном \n не найден");
                         return;
                     }
-
-                    if(User.Firstname != tbName.Text)
-                    {
+                    if(User.Firstname != tbName.Text){
                         ShowError("На данный номер телефона не зарегистрирован пользователь с таким именем.");
                         return;
                     }
-
-                    if(Classes.PasswordManager.stringToStringHash(tbPassword.Password) != User.Hashpass)
-                    {
+                    if(Classes.PasswordManager.stringToStringHash(tbPassword.Password) != User.Hashpass){
                         ShowError("Неверный пароль");
                         return;
                     }
-                    else
-                    {
-                        //вход
+                    else{
                         new MainWindow(WindowState, User).Show();
                         Close();
                     }
-
                 }
             }
-            catch(Exception)
-            {
+            catch(Exception){
                 ShowError("Ошибка соединения с базой данных");
             }
         }

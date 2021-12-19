@@ -67,7 +67,7 @@ namespace AutoCaffee
         private void HamBD_Click(object sender, RoutedEventArgs e) // База данных
         {
             HamPanelActive = false;
-
+            MainFrame.Navigate(new Pages.HamBD());
 
         }
 

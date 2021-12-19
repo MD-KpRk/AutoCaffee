@@ -19,20 +19,13 @@ namespace AutoCaffee
             ConfigurationBuilder builder = new ConfigurationBuilder();
             builder.SetBasePath(Directory.GetCurrentDirectory());
             builder.AddJsonFile("appsettings.json");
-            var config = builder.Build();
+            IConfigurationRoot config = builder.Build();
             conString = config.GetConnectionString("DefaultConnection");
-
-            var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();
-            var options = optionsBuilder
-                .UseSqlServer(conString)
-                .Options;
         }
-        
 
         public static ConfigurationHelper getInstance()
         {
-            if (instance == null)
-                instance = new ConfigurationHelper();
+            if (instance == null) instance = new ConfigurationHelper();
             return instance;
         }
     }

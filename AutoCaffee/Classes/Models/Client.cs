@@ -3,16 +3,14 @@ using System.Collections.Generic;
 
 namespace AutoCaffee
 {
-    public partial class Client
+    public class Client
     {
-        public Client()
-        {
-            Checks = new HashSet<Check>();
-        }
-
+        [Visible(false)]
         public int Id { get; set; }
+        [ColumnName("Имя")]
         public string Name { get; set; }
 
-        public virtual ICollection<Check> Checks { get; set; }
+        [Visible(false)]
+        public List<Check> Checks { get; set; }
     }
 }
