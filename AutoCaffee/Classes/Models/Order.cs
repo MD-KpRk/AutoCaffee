@@ -16,6 +16,11 @@ namespace AutoCaffee
         public int OrderstatusId { get; set; }
         public Orderstatus Orderstatus;
 
+        public override string ToString()
+        {
+            return Id.ToString();
+        }
+
         //public virtual Personal IdstaffNavigation { get; set; }
         //public virtual Orderstatus IdstatusNavigation { get; set; }
         //public virtual ICollection<Check> Checks { get; set; }

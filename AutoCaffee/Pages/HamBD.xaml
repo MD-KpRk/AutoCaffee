@@ -21,12 +21,12 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dg" Grid.Row="1" Grid.Column="1" AutoGeneratingColumn="dg_AutoGeneratingColumn" >
+        <DataGrid x:Name="dg" Grid.Row="1" Grid.Column="1" AutoGeneratingColumn="dg_AutoGeneratingColumn" FontSize="14" TextOptions.TextFormattingMode="Display" >
         </DataGrid>
         <ScrollViewer Grid.Row="1" Grid.Column="2" VerticalScrollBarVisibility="Auto" >
         <StackPanel>
             <TextBlock Text="Выбор таблицы" Margin="0,0,0,10" HorizontalAlignment="Center" FontSize="18" />
-                <ComboBox x:Name="cb1" Text="Выбор таблицы" Margin="10,0,10,0" FontSize="12" Height="26" VerticalContentAlignment="Center" SelectionChanged="cb1_SelectionChanged"  />
+                <ComboBox x:Name="cb1" Text="Выбор таблицы" Margin="10,0,10,0" FontSize="14" Height="26" VerticalContentAlignment="Center" SelectionChanged="cb1_SelectionChanged" TextOptions.TextFormattingMode="Display" />
 
         </StackPanel>
         </ScrollViewer>

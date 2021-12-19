@@ -10,8 +10,13 @@ namespace AutoCaffee
         [ColumnName("Наименование")]
         public string Title { get; set; }
         [ColumnName("Цена BYN")]
-        public float Price { get; set; }
+        public double Price { get; set; }
         [ColumnName("Наличие")]
         public bool Available { get; set; }
+
+        public override string ToString()
+        {
+            return Title;
+        }
     }
 }

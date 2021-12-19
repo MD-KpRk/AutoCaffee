@@ -5,7 +5,7 @@ namespace AutoCaffee
 {
     public class Client
     {
-        [Visible(false)]
+        [ColumnName("Номер")]
         public int Id { get; set; }
         [ColumnName("Имя клиента")]
         public string Name { get; set; }

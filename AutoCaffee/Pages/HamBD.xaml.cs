@@ -73,16 +73,24 @@ namespace AutoCaffee.Pages
                 {
                     dg.ItemsSource = bd.Rols.ToList();
                 }
+                if (number == 4)
+                {
+                    dg.ItemsSource = bd.Dishes.ToList();
+                }
+                if (number == 5)
+                {
+                    dg.ItemsSource = bd.Orderstrings.Include(item => item.Dish).Include(item2 => item2.Order).ToList();
+                }
             }
         }
 
         private void dg_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            PropertyDescriptor desc = e.PropertyDescriptor as PropertyDescriptor;
-            ColumnNameAttribute att = desc.Attributes[typeof(ColumnNameAttribute)] as ColumnNameAttribute;
-            VisibleAttribute att2 = desc.Attributes[typeof(VisibleAttribute)] as VisibleAttribute;
-            if (att != null) e.Column.Header = att.Name;
-            if(att2 != null) if (att2.visible == false) e.Column.Visibility = Visibility.Collapsed;
+            PropertyDescriptor descriptor = e.PropertyDescriptor as PropertyDescriptor;
+            ColumnNameAttribute nameAttribute = descriptor.Attributes[typeof(ColumnNameAttribute)] as ColumnNameAttribute;
+            VisibleAttribute visibleAttribute = descriptor.Attributes[typeof(VisibleAttribute)] as VisibleAttribute;
+            if (nameAttribute != null) e.Column.Header = nameAttribute.Name;
+            if(visibleAttribute != null) if (visibleAttribute.visible == false) e.Column.Visibility = Visibility.Collapsed;
         }
     }
 }

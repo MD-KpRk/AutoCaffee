@@ -5,13 +5,19 @@ namespace AutoCaffee
 {
     public partial class Orderstring
     {
+        [Visible(false)]
         public int Id { get; set; }
+        [ColumnName("Кол-во")]
         public int Count { get; set; }
 
-#warning Поменять вот эту чушь на что-то приемлимое
-        public virtual Dish IddishNavigation { get; set; }
+        [ColumnName("Блюдо")]
+        public Dish Dish { get; set; }
+        [Visible(false)]
         public int DishId { get; set; }
-        public virtual Order IdorderNavigation { get; set; }
+
+        [Visible(false)]
+        public Order Order { get; set; }
+        [ColumnName("Номер заказа")]
         public int OrderId { get; set; }
     }
 }
