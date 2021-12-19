@@ -9,12 +9,18 @@ namespace AutoCaffee
     public partial class Rol
     {
         public int Id { get; set; }
+        [ColumnName("Наименование")]
         public string Title { get; set; }
 
+        [ColumnName("Управление БД")]
         public bool CanBD { get; set; }
+        [ColumnName("Ролями")]
         public bool CanRole { get; set; }
+        [ColumnName("Персоналом")]
         public bool CanPersonal { get; set; }
+        [ColumnName("Заказами")]
         public bool CanOrder { get; set; }
+        [ColumnName("Блюдами")]
         public bool CanFood { get; set; }
     }
 }

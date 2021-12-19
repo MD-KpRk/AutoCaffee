@@ -69,6 +69,10 @@ namespace AutoCaffee.Pages
                 {
                     dg.ItemsSource = bd.Dolgs.ToList();
                 }
+                if (number == 3)
+                {
+                    dg.ItemsSource = bd.Rols.ToList();
+                }
             }
         }
 
