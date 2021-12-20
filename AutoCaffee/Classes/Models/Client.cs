@@ -17,7 +17,7 @@ namespace AutoCaffee
 
         public int CompareTo(object obj) => Name.CompareTo(obj as string);
 
-        public override string ToString() => Name;
+        public override string ToString() => Id +": "+ Name;
 
     }
 }

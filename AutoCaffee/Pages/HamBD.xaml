@@ -21,7 +21,7 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dg" Grid.Row="1" Grid.Column="1" AutoGeneratingColumn="dg_AutoGeneratingColumn" FontSize="14" TextOptions.TextFormattingMode="Display" >
+        <DataGrid x:Name="dg" Grid.Row="1" Grid.Column="1" AutoGeneratingColumn="dg_AutoGeneratingColumn" FontSize="14" TextOptions.TextFormattingMode="Display" AddingNewItem="dg_AddingNewItem" >
         </DataGrid>
         <ScrollViewer Grid.Row="1" Grid.Column="2" VerticalScrollBarVisibility="Auto" >
         <StackPanel>

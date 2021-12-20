@@ -12,6 +12,7 @@ namespace AutoCaffee
         [ColumnName("Наименование")]
         public string Title { get; set; }
 
+        [Visible(false)]
         public List<Order> Orders { get; set; }
 
         public int CompareTo(object obj) =>Title.CompareTo(obj as string);

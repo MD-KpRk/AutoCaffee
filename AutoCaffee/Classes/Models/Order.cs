@@ -26,15 +26,15 @@ namespace AutoCaffee
         public override string ToString() => Id.ToString();
         public int CompareTo(object obj) => Id.CompareTo(Convert.ToInt32(obj as string));
 
-        //[Visible(false)]
-        public List<Orderstring> Orderstrings { get; set; } = new List<Orderstring>();
+        [ColumnName("Строки заказов")]
+        public OrderStringCollection<Orderstring> Orderstrings { get; set; } = new OrderStringCollection<Orderstring>();
 
         [Visible(false)]
         public List<Check> Checks { get; set; } = new List<Check>();
     }
 
 
-    public class OrderStringCollection : List<Orderstring>
+    public class OrderStringCollection<Orderstring> : List<Orderstring>
     {
         public override string ToString()
         {
@@ -45,5 +45,7 @@ namespace AutoCaffee
             return string.Join(Separator, this);
         }
     }
+
+
 
 }

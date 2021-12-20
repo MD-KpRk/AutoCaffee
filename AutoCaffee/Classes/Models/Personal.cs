@@ -7,7 +7,7 @@ namespace AutoCaffee
 {
     public class Personal : IComparable
     {
-        [Visible(false)]
+        [ColumnName("Номер")]
         [Key]
         public int Id { get; set; }
         [ColumnName("Имя")]
@@ -35,7 +35,7 @@ namespace AutoCaffee
         public List<Order> Orders { get; set; }
 
         public int CompareTo(object obj) => Firstname.CompareTo(obj.ToString());
-        public override string ToString() => Firstname;
+        public override string ToString() => Id + ": " + Firstname;
 
     }
 }

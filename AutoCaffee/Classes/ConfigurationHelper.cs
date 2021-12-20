@@ -12,6 +12,7 @@ namespace AutoCaffee
     // Singleton
     public class ConfigurationHelper
     {
+        public static DbContextOptions<AutoCaffeeBDContext> dbContextOptions = new DbContextOptionsBuilder<AutoCaffeeBDContext>().UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
         private static ConfigurationHelper instance;
         public readonly string conString;
         private ConfigurationHelper()
