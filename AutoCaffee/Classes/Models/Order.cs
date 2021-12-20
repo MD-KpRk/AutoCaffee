@@ -27,24 +27,12 @@ namespace AutoCaffee
         public int CompareTo(object obj) => Id.CompareTo(Convert.ToInt32(obj as string));
 
         [ColumnName("Строки заказов")]
-        public OrderStringCollection<Orderstring> Orderstrings { get; set; } = new OrderStringCollection<Orderstring>();
+        public List<Orderstring> Orderstrings { get; set; } = new List<Orderstring>();
 
         [Visible(false)]
         public List<Check> Checks { get; set; } = new List<Check>();
     }
 
-
-    public class OrderStringCollection<Orderstring> : List<Orderstring>
-    {
-        public override string ToString()
-        {
-            return string.Join(", ", this);
-        }
-        public string ToString(string Separator)
-        {
-            return string.Join(Separator, this);
-        }
-    }
 
 
 

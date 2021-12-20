@@ -140,9 +140,5 @@ namespace AutoCaffee.Pages
             if(visibleAttribute != null) if (visibleAttribute.visible == false) e.Column.Visibility = Visibility.Collapsed;
         }
 
-        private void dg_AddingNewItem(object sender, AddingNewItemEventArgs e)
-        {
-            e.NewItem = 2;
-        }
     }
 }
