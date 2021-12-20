@@ -49,10 +49,14 @@ namespace AutoCaffee.Pages
 
             void DisableAllSearchPanels()
             {
+                Separat.Visibility = Visibility.Collapsed;
+                SearchTextBlock.Visibility = Visibility.Collapsed;
                 SearchPersonal.Visibility = Visibility.Collapsed;
             }
             void ShowSearchPanel(StackPanel panel)
             {
+                Separat.Visibility = Visibility.Visible;
+                SearchTextBlock.Visibility = Visibility.Visible;
                 panel.Visibility = Visibility.Visible;
             }
         }
@@ -80,10 +84,10 @@ namespace AutoCaffee.Pages
                         case Tables.Orders:
                             dg.ItemsSource = bd.Orders.Include(item => item.Orderstatus).Include(item => item.Personal).ToList();
                             bd.Orderstrings.Include(item => item.Dish).Include(item2 => item2.Order).ToList();
-                            foreach (var a in bd.Orders.Where(it => it.Id == 1).ToList().FirstOrDefault().Orderstrings)
-                            {
-                                Debug.WriteLine(a.Dish);
-                            }
+                            //foreach (var a in bd.Orders.Where(it => it.Id == 1).ToList().FirstOrDefault().Orderstrings)
+                            //{
+                            //    Debug.WriteLine(a.Dish);
+                            //}
                             break;
                         case Tables.Clients: dg.ItemsSource = bd.Clients.ToList(); break;
                         case Tables.Checks: dg.ItemsSource = bd.Checks.Include(item => item.Order).Include(item => item.Client).ToList(); break;
@@ -139,7 +143,6 @@ namespace AutoCaffee.Pages
             {
                 ShowErrorBox("Выберите 1 элемент");
                 return;
-
             }
         }
 

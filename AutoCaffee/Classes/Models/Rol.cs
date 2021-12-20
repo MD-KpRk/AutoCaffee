@@ -10,6 +10,7 @@ namespace AutoCaffee
     public partial class Rol : IComparable
     {
         [Key]
+        [Visible(false)]
         public int Id { get; set; }
         [ColumnName("Наименование")]
         public string Title { get; set; }
