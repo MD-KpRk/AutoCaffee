@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AutoCaffee.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="700" d:DesignWidth="800"
       FontFamily ="{StaticResource Roboto}"
       Title="HamBD">
 
@@ -21,14 +21,37 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dg" Grid.Row="1" Grid.Column="1" AutoGeneratingColumn="dg_AutoGeneratingColumn" FontSize="14" TextOptions.TextFormattingMode="Display">
-        </DataGrid>
+        <DataGrid x:Name="dg" IsReadOnly="True" BorderBrush="#FF273038" Grid.Row="1" Grid.Column="1" AutoGeneratingColumn="dg_AutoGeneratingColumn" FontSize="14" TextOptions.TextFormattingMode="Display" Background="{x:Null}" />
         <ScrollViewer Grid.Row="1" Grid.Column="2" VerticalScrollBarVisibility="Auto" >
-        <StackPanel>
-            <TextBlock Text="Выбор таблицы" Margin="0,0,0,10" HorizontalAlignment="Center" FontSize="18" />
+            <StackPanel>
+                <TextBlock Text="Выбор таблицы" Margin="0,0,0,20" HorizontalAlignment="Center" FontSize="18" />
                 <ComboBox x:Name="cb1" Text="Выбор таблицы" Margin="10,0,10,0" FontSize="14" Height="26" VerticalContentAlignment="Center" SelectionChanged="cb1_SelectionChanged" TextOptions.TextFormattingMode="Display" />
 
-        </StackPanel>
+                <Button x:Name="Description" Margin="10,20,10,20" FontSize="14" Content="Подробнее" MinHeight="26" Click="Description_Click" />
+                <Separator Margin="10,0,10,0"/>
+                <TextBlock Text="Поиск по таблице" Margin="0,10,0,0" HorizontalAlignment="Center" FontSize="16" />
+
+                <StackPanel Visibility="Visible" x:Name="SearchPersonal" Margin="10,10,10,0" >
+                    <TextBlock Text="Номер сотруника" Margin="0,8,0,2" FontSize="14" />
+                    <TextBox x:Name="ptb1"  Height="26" FontSize="14" VerticalContentAlignment="Center" TextChanged="TextTargetUpdated" />
+                    <TextBlock Text="Имя сотрудника" Margin="0,8,0,2" FontSize="14" />
+                    <TextBox x:Name="ptb2" Height="26" FontSize="14"  VerticalContentAlignment="Center" TextChanged="TextTargetUpdated" />
+                    <TextBlock Text="Фамилия сотрудника" Margin="0,8,0,2" FontSize="14" />
+                    <TextBox x:Name="ptb3" Height="26" FontSize="14" VerticalContentAlignment="Center" TextChanged="TextTargetUpdated" />
+                    <TextBlock Text="Отчество сотрудника" Margin="0,8,0,2" FontSize="14" />
+                    <TextBox x:Name="ptb4" Height="26" FontSize="14" VerticalContentAlignment="Center" TextChanged="TextTargetUpdated" />
+                    <TextBlock Text="Номер телефона" Margin="0,8,0,2" FontSize="14" />
+                    <TextBox x:Name="ptb5" Height="26" FontSize="14"  VerticalContentAlignment="Center" TextChanged="TextTargetUpdated" />
+                    <TextBlock Text="Должность сотрудника" Margin="0,8,0,2" FontSize="14" />
+                    <TextBox x:Name="ptb6" Height="26" FontSize="14"  VerticalContentAlignment="Center" TextChanged="TextTargetUpdated" />
+                    <TextBlock Text="Роль сотрудника" Margin="0,8,0,2" FontSize="14" />
+                    <TextBox x:Name="ptb7" Height="26" FontSize="14"  VerticalContentAlignment="Center" TextChanged="TextTargetUpdated" />
+                    
+                    <Button x:Name="PersonalSearchButton" Margin="0,10,0,0" Height="26" FontSize="14" Content="Поиск" Click="PersonalSearchButton_Click" />
+                    <Button x:Name="PersonalResetButton" Margin="0,10,0,0" Height="26" FontSize="14" Content="Сброс поиска" Click="PersonalResetButton_Click" />
+
+                </StackPanel>
+            </StackPanel>
         </ScrollViewer>
 
     </Grid>

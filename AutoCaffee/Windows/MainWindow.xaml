@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoCaffee"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1000" MinHeight="400" MinWidth="500"
+        Title="MainWindow" Height="760" Width="1000" MinHeight="400" MinWidth="500"
         FontFamily ="{StaticResource Roboto}" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
