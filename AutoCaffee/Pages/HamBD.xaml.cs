@@ -44,6 +44,7 @@ namespace AutoCaffee.Pages
             switch(tableForSearch)
             {
                 case Tables.Personal: ShowSearchPanel(SearchPersonal); break;
+                case Tables.Rols: ShowSearchPanel(SearchRole); break;
             }
 
 
@@ -52,6 +53,7 @@ namespace AutoCaffee.Pages
                 Separat.Visibility = Visibility.Collapsed;
                 SearchTextBlock.Visibility = Visibility.Collapsed;
                 SearchPersonal.Visibility = Visibility.Collapsed;
+                SearchRole.Visibility = Visibility.Collapsed;
             }
             void ShowSearchPanel(StackPanel panel)
             {
@@ -146,6 +148,8 @@ namespace AutoCaffee.Pages
             }
         }
 
+
+        #region Поиск персонала
         private void PersonalSearchButton_Click(object sender, RoutedEventArgs e)
         {
             using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
@@ -177,6 +181,56 @@ namespace AutoCaffee.Pages
             bool IsEmpty(TextBox tb) => string.IsNullOrEmpty(tb.Text);
 
         }
+        #endregion
 
+        #region Поиск ролей
+        private void RoleSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
+            {
+                List<Rol> rols = bd.Rols.ToList();
+
+                if (CBEnable.IsChecked == false)
+                {
+                    dg.ItemsSource = rols.Where(item
+                        =>
+                    item.Title.ToLower().Contains(rtb1.Text.ToLower())
+                    );
+                }
+                else
+                {
+                    dg.ItemsSource = rols.Where(item 
+                        =>
+                    item.Title.ToString().Contains(rtb1.Text.ToLower()) &&
+                    rcb1.IsChecked == item.CanBD &&
+                    rcb2.IsChecked == item.CanRole &&
+                    rcb3.IsChecked == item.CanPersonal &&
+                    rcb4.IsChecked == item.CanOrder &&
+                    rcb5.IsChecked == item.CanFood
+                    );
+                }
+            }
+        }
+
+        private void RoleResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            rcb1.IsChecked = rcb2.IsChecked = rcb3.IsChecked = rcb4.IsChecked = rcb5.IsChecked = false;
+            rtb1.Text = "";
+            CurrentTable = currentTable;
+        }
+
+        private void CBEnable_Checked(object sender, RoutedEventArgs e)
+        {
+
+            FlagSearch.IsEnabled = true;
+
+        }
+
+        private void CBEnable_Unchecked(object sender, RoutedEventArgs e)
+        {
+            FlagSearch.IsEnabled = false;
+            rcb1.IsChecked = rcb2.IsChecked = rcb3.IsChecked = rcb4.IsChecked = rcb5.IsChecked = false;
+        }
+        #endregion
     }
 }

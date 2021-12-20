@@ -31,7 +31,7 @@
                 <Separator x:Name="Separat" Margin="10,0,10,0"/>
                 <TextBlock x:Name="SearchTextBlock" Text="Поиск по таблице" Margin="0,10,0,0" HorizontalAlignment="Center" FontSize="16" />
 
-                <StackPanel Visibility="Visible" x:Name="SearchPersonal" Margin="10,10,10,0" >
+                <StackPanel Visibility="Collapsed" x:Name="SearchPersonal" Margin="10,10,10,0" >
                     <TextBlock Text="Номер сотруника" Margin="0,8,0,2" FontSize="14" />
                     <TextBox x:Name="ptb1"  Height="26" FontSize="14" VerticalContentAlignment="Center" TextChanged="TextTargetUpdated" />
                     <TextBlock Text="Имя сотрудника" Margin="0,8,0,2" FontSize="14" />
@@ -51,6 +51,45 @@
                     <Button x:Name="PersonalResetButton" Margin="0,10,0,0" Height="26" FontSize="14" Content="Сброс поиска" Click="PersonalResetButton_Click" />
 
                 </StackPanel>
+                <StackPanel Visibility="Visible" x:Name="SearchRole" Margin="10,10,10,0" >
+                    <TextBlock Text="Наименование роли" Margin="0,8,0,2" FontSize="14" />
+                    <TextBox x:Name="rtb1"  Height="26" FontSize="14" VerticalContentAlignment="Center" />
+                    <DockPanel Margin="0,10,0,0">
+                        <TextBlock DockPanel.Dock="Left" Text="Поиск по флагам" Margin="0,0,0,0" FontSize="14" />
+                        <CheckBox x:Name="CBEnable" DockPanel.Dock="Right" Height="18" Width="18" Margin="10,2,0,0" HorizontalAlignment="Right"  HorizontalContentAlignment="Center" Checked="CBEnable_Checked" Unchecked="CBEnable_Unchecked" />
+                    </DockPanel>
+                    <StackPanel x:Name="FlagSearch" IsEnabled="False">
+                        <Separator Margin="0,8,0,2" Height="5"/>
+                        <DockPanel Margin="0,10,0,0">
+                            <TextBlock DockPanel.Dock="Left" Text="Доступ к бд" Margin="0,0,0,2" FontSize="14" />
+                            <CheckBox x:Name="rcb1" DockPanel.Dock="Right" Height="18" Width="18" Margin="10,2,0,0" HorizontalAlignment="Right" HorizontalContentAlignment="Center" />
+                        </DockPanel>
+                        <Separator Margin="0,8,0,2" Height="5"/>
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Left" Text="Управление ролями" Margin="0,8,0,2" FontSize="14" />
+                            <CheckBox x:Name="rcb2" DockPanel.Dock="Right" Height="18" Width="18" Margin="10,2,0,0" HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                        </DockPanel>
+                        <Separator Margin="0,8,0,2" Height="5"/>
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Left" Text="Персоналом" Margin="0,8,0,2" FontSize="14" />
+                            <CheckBox x:Name="rcb3" DockPanel.Dock="Right" Height="18" Width="18" Margin="10,2,0,0" HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                        </DockPanel>
+                        <Separator Margin="0,8,0,2" Height="5"/>
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Left" Text="Заказами" Margin="0,8,0,2" FontSize="14" />
+                            <CheckBox x:Name="rcb4" DockPanel.Dock="Right" Height="18" Width="18" Margin="10,2,0,0" HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                        </DockPanel>
+                        <Separator Margin="0,8,0,2" Height="5"/>
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Left" Text="Блюдами" Margin="0,8,0,2" FontSize="14" />
+                            <CheckBox x:Name="rcb5" DockPanel.Dock="Right" Height="18" Width="18" Margin="10,2,0,0" HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                        </DockPanel>
+                    </StackPanel>
+
+                    <Button x:Name="RoleSearchButton" Margin="0,10,0,0" Height="26" FontSize="14" Content="Поиск" Click="RoleSearchButton_Click" />
+                    <Button x:Name="RoleResetButton" Margin="0,10,0,0" Height="26" FontSize="14" Content="Сброс поиска" Click="RoleResetButton_Click" />
+                </StackPanel>
+
             </StackPanel>
         </ScrollViewer>
 
