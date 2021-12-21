@@ -152,38 +152,28 @@ namespace AutoCaffee.Pages
             }
         }
 
-
         #region Поиск персонала
         private void PersonalSearchButton_Click(object sender, RoutedEventArgs e)
         {
             using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
             {
                 List<Personal> personals = bd.Personals.Include(item => item.Dolg).Include(item => item.Rol).ToList();
-
-                dg.ItemsSource = personals.Where(item 
-                    => 
-                item.Id.ToString().Contains(ptb1.Text) &&
-                item.Firstname.ToLower().Contains(ptb2.Text.ToLower()) &&
-                item.Secondname.ToLower().Contains(ptb3.Text.ToLower()) &&
-                item.Patronymic.ToLower().Contains(ptb4.Text.ToLower()) &&
-                item.Phonenumber.ToLower().Contains(ptb5.Text.ToLower()) &&
-                item.Dolg.ToString().ToLower().Contains(ptb6.Text.ToLower()) &&
-                item.Rol.ToString().ToLower().Contains(ptb7.Text.ToLower()) 
+                dg.ItemsSource = personals.Where(item =>  item.Id.ToString().Contains(ptb1.Text) && 
+                item.Firstname.ToLower().Contains(ptb2.Text.ToLower()) && item.Secondname.ToLower().Contains(ptb3.Text.ToLower()) && 
+                item.Patronymic.ToLower().Contains(ptb4.Text.ToLower()) && item.Phonenumber.ToLower().Contains(ptb5.Text.ToLower()) &&  
+                item.Dolg.ToString().ToLower().Contains(ptb6.Text.ToLower()) && item.Rol.ToString().ToLower().Contains(ptb7.Text.ToLower()) 
                 );
             }
         }
-
         private void PersonalResetButton_Click(object sender, RoutedEventArgs e)
         {
             ptb1.Text = ptb2.Text = ptb3.Text = ptb4.Text = ptb5.Text = ptb6.Text = ptb7.Text = "";
             CurrentTable = currentTable;
         }
-
         private void TextTargetUpdated(object sender, TextChangedEventArgs e)
         {
             if(IsEmpty(ptb1) && IsEmpty(ptb2) && IsEmpty(ptb3) && IsEmpty(ptb4) && IsEmpty(ptb5) && IsEmpty(ptb6) && IsEmpty(ptb7)) CurrentTable = currentTable;
             bool IsEmpty(TextBox tb) => string.IsNullOrEmpty(tb.Text);
-
         }
         #endregion
 
@@ -193,42 +183,21 @@ namespace AutoCaffee.Pages
             using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
             {
                 List<Rol> rols = bd.Rols.ToList();
-
-                if (CBEnable.IsChecked == false)
-                {
-                    dg.ItemsSource = rols.Where(item
-                        =>
-                    item.Title.ToLower().Contains(rtb1.Text.ToLower())
-                    );
-                }
+                if (CBEnable.IsChecked == false) dg.ItemsSource = rols.Where(item=>item.Title.ToLower().Contains(rtb1.Text.ToLower()));
                 else
                 {
-                    dg.ItemsSource = rols.Where(item
-                        =>
-                    item.Title.ToString().Contains(rtb1.Text.ToLower()) &&
-                    rcb1.IsChecked == item.CanBD &&
-                    rcb2.IsChecked == item.CanRole &&
-                    rcb3.IsChecked == item.CanPersonal &&
-                    rcb4.IsChecked == item.CanOrder &&
-                    rcb5.IsChecked == item.CanFood
-                    );
+                    dg.ItemsSource = rols.Where(item=>item.Title.ToString().Contains(rtb1.Text.ToLower()) && rcb1.IsChecked == item.CanBD &&
+                    rcb2.IsChecked == item.CanRole && rcb3.IsChecked == item.CanPersonal && rcb4.IsChecked == item.CanOrder && rcb5.IsChecked == item.CanFood);
                 }
             }
         }
-
         private void RoleResetButton_Click(object sender, RoutedEventArgs e)
         {
             rcb1.IsChecked = rcb2.IsChecked = rcb3.IsChecked = rcb4.IsChecked = rcb5.IsChecked = false;
             rtb1.Text = "";
             CurrentTable = currentTable;
         }
-
-        private void CBEnable_Checked(object sender, RoutedEventArgs e)
-        {
-
-            FlagSearch.IsEnabled = true;
-
-        }
+        private void CBEnable_Checked(object sender, RoutedEventArgs e) => FlagSearch.IsEnabled = true;
 
         private void CBEnable_Unchecked(object sender, RoutedEventArgs e)
         {
@@ -244,47 +213,31 @@ namespace AutoCaffee.Pages
             dtb1.Text = dtb2.Text = "";
             CurrentTable = currentTable;
         }
-
         private void DishSearchButton_Click(object sender, RoutedEventArgs e)
         {
             using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
             {
                 List<Dish> dishes = bd.Dishes.ToList();
-
-                if (DCBEnable.IsChecked == false)
-                {
-                    dg.ItemsSource = dishes.Where(item
-                        =>
-                    item.Title.ToLower().Contains(dtb1.Text.ToLower()) &&
-                    item.Price.ToString().ToLower().Contains(dtb2.Text.ToLower().Replace(',','.'))
-                    );
+                if (DCBEnable.IsChecked == false){
+                    dg.ItemsSource = dishes.Where(item => item.Title.ToLower().Contains(dtb1.Text.ToLower()) &&
+                    item.Price.ToString().ToLower().Contains(dtb2.Text.ToLower().Replace(',','.')));
                 }
-                else
-                {
-                dg.ItemsSource = dishes.Where(item
-                    =>
-                item.Title.ToLower().Contains(dtb1.Text.ToLower()) &&
-                item.Price.ToString().ToLower().Contains(dtb2.Text.ToLower()) &&
-                item.Available == DCBEnable1.IsChecked
-                );
+                else{
+                dg.ItemsSource = dishes.Where(item => item.Title.ToLower().Contains(dtb1.Text.ToLower()) &&
+                item.Price.ToString().ToLower().Contains(dtb2.Text.ToLower()) && item.Available == DCBEnable1.IsChecked);
                 }
             }
         }
         private void DCBEnable_Checked(object sender, RoutedEventArgs e) => DishFlags.IsEnabled = true;
         private void DCBEnable_Unchecked(object sender, RoutedEventArgs e) { DCBEnable1.IsChecked = false; DishFlags.IsEnabled = false; }
-
-
-
         #endregion
 
         #region Поиск Строк заказов
-
         private void StringsResetButton_Click(object sender, RoutedEventArgs e)
         {
             stb1.Text = stb2.Text = stb3.Text = "";
             CurrentTable = currentTable;
         }
-
         private void StringsSearchButton_Click(object sender, RoutedEventArgs e)
         {
             using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
@@ -293,10 +246,9 @@ namespace AutoCaffee.Pages
 
                 try
                 {
-                    dg.ItemsSource = orderstrings.Where(item
-                        =>
+                    dg.ItemsSource = orderstrings.Where(item=>
                     (string.IsNullOrEmpty(stb1.Text) ? true : item.Count == Convert.ToInt32(stb1.Text)) &&
-                    item.Dish.ToString().ToLower().Contains(stb2.Text) &&
+                    item.Dish.ToString().ToLower().Contains(stb2.Text.ToLower()) &&
                     (string.IsNullOrEmpty(stb3.Text) ? true : Convert.ToInt32(item.Order.ToString()) == Convert.ToInt32(stb3.Text))
                     );
                 }
@@ -306,14 +258,50 @@ namespace AutoCaffee.Pages
                 }
             }
         }
-
         private void stb_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(stb1.Text) && string.IsNullOrEmpty(stb2.Text) && string.IsNullOrEmpty(stb3.Text)) CurrentTable = currentTable;
         }
 
+
+
+
         #endregion
 
+        private void OrdersResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            otb1.Text = otb2.Text = otb3.Text = "";
+            CurrentTable = currentTable;
+        }
 
+        private void OrdersSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
+            {
+                bd.Orderstrings.Include(item => item.Dish).Include(item2 => item2.Order).ToList();
+                List<Order> orders = bd.Orders.Include(item => item.Orderstatus).Include(item => item.Personal).ToList();
+
+                try
+                {
+
+                    dg.ItemsSource = orders.Where(item =>
+                    (string.IsNullOrEmpty(otb1.Text) ? true : item.Id == Convert.ToInt32(otb1.Text)) &&
+                    item.Personal.ToString().ToLower().Contains(otb2.Text.ToLower()) &&
+                    item.Orderstatus.ToString().ToLower().Contains(otb3.Text.ToLower()) 
+ 
+                    );
+                }
+                catch (Exception)
+                {
+                    ShowErrorBox("В поля поиска введены некорректные данные!");
+                }
+            }
+        }
+
+        private void otb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(otb1.Text) && string.IsNullOrEmpty(otb2.Text) && string.IsNullOrEmpty(otb3.Text))
+                CurrentTable = currentTable;
+        }
     }
 }
