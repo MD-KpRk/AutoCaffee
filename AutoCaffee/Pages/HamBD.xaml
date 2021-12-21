@@ -89,7 +89,6 @@
                     <Button x:Name="RoleSearchButton" Margin="0,10,0,0" Height="26" FontSize="14" Content="Поиск" Click="RoleSearchButton_Click" />
                     <Button x:Name="RoleResetButton" Margin="0,10,0,0" Height="26" FontSize="14" Content="Сброс поиска" Click="RoleResetButton_Click" />
                 </StackPanel>
-
                 <StackPanel Visibility="Collapsed" x:Name="SearchDish" Margin="10,10,10,0">
                     <TextBlock Text="Наименование блюда" Margin="0,8,0,2" FontSize="14" />
                     <TextBox x:Name="dtb1"  Height="26" FontSize="14" VerticalContentAlignment="Center" />
@@ -105,6 +104,16 @@
                     </DockPanel>
                     <Button x:Name="DishSearchButton" Margin="0,10,0,0" Height="26" FontSize="14" Content="Поиск" Click="DishSearchButton_Click"/>
                     <Button x:Name="DishResetButton" Margin="0,10,0,0" Height="26" FontSize="14" Content="Сброс поиска" Click="DishResetButton_Click"/>
+                </StackPanel>
+                <StackPanel Visibility="Visible" x:Name="SearchStrings" Margin="10,10,10,0">
+                    <TextBlock Text="Количество" Margin="0,8,0,2" FontSize="14" />
+                    <TextBox x:Name="stb1"  Height="26" FontSize="14" VerticalContentAlignment="Center" TextChanged="stb_TextChanged" />
+                    <TextBlock Text="Наименование блюда" Margin="0,8,0,2" FontSize="14" />
+                    <TextBox x:Name="stb2"  Height="26" FontSize="14" VerticalContentAlignment="Center" TextChanged="stb_TextChanged"/>
+                    <TextBlock Text="Номер заказа" Margin="0,8,0,2" FontSize="14" />
+                    <TextBox x:Name="stb3"  Height="26" FontSize="14" VerticalContentAlignment="Center" TextChanged="stb_TextChanged" />
+                    <Button x:Name="StringsSearchButton" Margin="0,10,0,0" Height="26" FontSize="14" Content="Поиск" Click="StringsSearchButton_Click"/>
+                    <Button x:Name="StringsResetButton" Margin="0,10,0,0" Height="26" FontSize="14" Content="Сброс поиска" Click="StringsResetButton_Click" />
                 </StackPanel>
 
             </StackPanel>

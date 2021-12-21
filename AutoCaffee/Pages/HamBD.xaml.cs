@@ -40,22 +40,24 @@ namespace AutoCaffee.Pages
     {
         void SwitchSearchPanel(Tables tableForSearch)
         {
-            DisableAllSearchPanels();
+            DisableAllSearchElements();
             switch(tableForSearch)
             {
                 case Tables.Personal: ShowSearchPanel(SearchPersonal); break;
                 case Tables.Rols: ShowSearchPanel(SearchRole); break;
                 case Tables.Dishes: ShowSearchPanel(SearchDish); break;
+                case Tables.OrderStrings: ShowSearchPanel(SearchStrings); break;
             }
 
 
-            void DisableAllSearchPanels()
+            void DisableAllSearchElements()
             {
                 Separat.Visibility = Visibility.Collapsed;
                 SearchTextBlock.Visibility = Visibility.Collapsed;
                 SearchPersonal.Visibility = Visibility.Collapsed;
                 SearchRole.Visibility = Visibility.Collapsed;
                 SearchDish.Visibility = Visibility.Collapsed;
+                SearchStrings.Visibility = Visibility.Collapsed;
             }
             void ShowSearchPanel(StackPanel panel)
             {
@@ -270,6 +272,46 @@ namespace AutoCaffee.Pages
         }
         private void DCBEnable_Checked(object sender, RoutedEventArgs e) => DishFlags.IsEnabled = true;
         private void DCBEnable_Unchecked(object sender, RoutedEventArgs e) { DCBEnable1.IsChecked = false; DishFlags.IsEnabled = false; }
+
+
+
+        #endregion
+
+        #region Поиск Строк заказов
+
+        private void StringsResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            stb1.Text = stb2.Text = stb3.Text = "";
+            CurrentTable = currentTable;
+        }
+
+        private void StringsSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
+            {
+                List<Orderstring> orderstrings = bd.Orderstrings.Include(item => item.Dish).Include(item2 => item2.Order).ToList();
+
+                try
+                {
+                    dg.ItemsSource = orderstrings.Where(item
+                        =>
+                    (string.IsNullOrEmpty(stb1.Text) ? true : item.Count == Convert.ToInt32(stb1.Text)) &&
+                    item.Dish.ToString().ToLower().Contains(stb2.Text) &&
+                    (string.IsNullOrEmpty(stb3.Text) ? true : Convert.ToInt32(item.Order.ToString()) == Convert.ToInt32(stb3.Text))
+                    );
+                }
+                catch(Exception)
+                {
+                    ShowErrorBox("В поля поиска введены некорректные данные!");
+                }
+            }
+        }
+
+        private void stb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(stb1.Text) && string.IsNullOrEmpty(stb2.Text) && string.IsNullOrEmpty(stb3.Text)) CurrentTable = currentTable;
+        }
+
         #endregion
 
 
