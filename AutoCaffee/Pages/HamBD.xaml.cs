@@ -45,6 +45,7 @@ namespace AutoCaffee.Pages
             {
                 case Tables.Personal: ShowSearchPanel(SearchPersonal); break;
                 case Tables.Rols: ShowSearchPanel(SearchRole); break;
+                case Tables.Dishes: ShowSearchPanel(SearchDish); break;
             }
 
 
@@ -54,6 +55,7 @@ namespace AutoCaffee.Pages
                 SearchTextBlock.Visibility = Visibility.Collapsed;
                 SearchPersonal.Visibility = Visibility.Collapsed;
                 SearchRole.Visibility = Visibility.Collapsed;
+                SearchDish.Visibility = Visibility.Collapsed;
             }
             void ShowSearchPanel(StackPanel panel)
             {
@@ -199,7 +201,7 @@ namespace AutoCaffee.Pages
                 }
                 else
                 {
-                    dg.ItemsSource = rols.Where(item 
+                    dg.ItemsSource = rols.Where(item
                         =>
                     item.Title.ToString().Contains(rtb1.Text.ToLower()) &&
                     rcb1.IsChecked == item.CanBD &&
@@ -232,5 +234,44 @@ namespace AutoCaffee.Pages
             rcb1.IsChecked = rcb2.IsChecked = rcb3.IsChecked = rcb4.IsChecked = rcb5.IsChecked = false;
         }
         #endregion
+
+        #region Поиск блюд
+        private void DishResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            DCBEnable.IsChecked = DCBEnable1.IsChecked = false;
+            dtb1.Text = dtb2.Text = "";
+            CurrentTable = currentTable;
+        }
+
+        private void DishSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
+            {
+                List<Dish> dishes = bd.Dishes.ToList();
+
+                if (DCBEnable.IsChecked == false)
+                {
+                    dg.ItemsSource = dishes.Where(item
+                        =>
+                    item.Title.ToLower().Contains(dtb1.Text.ToLower()) &&
+                    item.Price.ToString().ToLower().Contains(dtb2.Text.ToLower().Replace(',','.'))
+                    );
+                }
+                else
+                {
+                dg.ItemsSource = dishes.Where(item
+                    =>
+                item.Title.ToLower().Contains(dtb1.Text.ToLower()) &&
+                item.Price.ToString().ToLower().Contains(dtb2.Text.ToLower()) &&
+                item.Available == DCBEnable1.IsChecked
+                );
+                }
+            }
+        }
+        private void DCBEnable_Checked(object sender, RoutedEventArgs e) => DishFlags.IsEnabled = true;
+        private void DCBEnable_Unchecked(object sender, RoutedEventArgs e) { DCBEnable1.IsChecked = false; DishFlags.IsEnabled = false; }
+        #endregion
+
+
     }
 }

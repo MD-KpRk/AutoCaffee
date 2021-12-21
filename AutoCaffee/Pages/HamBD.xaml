@@ -51,7 +51,7 @@
                     <Button x:Name="PersonalResetButton" Margin="0,10,0,0" Height="26" FontSize="14" Content="Сброс поиска" Click="PersonalResetButton_Click" />
 
                 </StackPanel>
-                <StackPanel Visibility="Visible" x:Name="SearchRole" Margin="10,10,10,0" >
+                <StackPanel Visibility="Collapsed" x:Name="SearchRole" Margin="10,10,10,0" >
                     <TextBlock Text="Наименование роли" Margin="0,8,0,2" FontSize="14" />
                     <TextBox x:Name="rtb1"  Height="26" FontSize="14" VerticalContentAlignment="Center" />
                     <DockPanel Margin="0,10,0,0">
@@ -88,6 +88,23 @@
 
                     <Button x:Name="RoleSearchButton" Margin="0,10,0,0" Height="26" FontSize="14" Content="Поиск" Click="RoleSearchButton_Click" />
                     <Button x:Name="RoleResetButton" Margin="0,10,0,0" Height="26" FontSize="14" Content="Сброс поиска" Click="RoleResetButton_Click" />
+                </StackPanel>
+
+                <StackPanel Visibility="Collapsed" x:Name="SearchDish" Margin="10,10,10,0">
+                    <TextBlock Text="Наименование блюда" Margin="0,8,0,2" FontSize="14" />
+                    <TextBox x:Name="dtb1"  Height="26" FontSize="14" VerticalContentAlignment="Center" />
+                    <TextBlock Text="Цена блюда" Margin="0,8,0,2" FontSize="14" />
+                    <TextBox x:Name="dtb2"  Height="26" FontSize="14" VerticalContentAlignment="Center" />
+                    <DockPanel Margin="0,10,0,0">
+                        <TextBlock DockPanel.Dock="Left" Text="Поиск по флагам" Margin="0,0,0,0" FontSize="14" />
+                        <CheckBox x:Name="DCBEnable" DockPanel.Dock="Right" Height="18" Width="18" Margin="10,2,0,0" HorizontalAlignment="Right"  HorizontalContentAlignment="Center" Checked="DCBEnable_Checked" Unchecked="DCBEnable_Unchecked" />
+                    </DockPanel>
+                    <DockPanel IsEnabled="False" x:Name="DishFlags"  Margin="0,10,0,0">
+                        <TextBlock DockPanel.Dock="Left" Text="Наличие" Margin="0,0,0,0" FontSize="14" />
+                        <CheckBox x:Name="DCBEnable1" DockPanel.Dock="Right" Height="18" Width="18" Margin="10,2,0,0" HorizontalAlignment="Right"  HorizontalContentAlignment="Center" />
+                    </DockPanel>
+                    <Button x:Name="DishSearchButton" Margin="0,10,0,0" Height="26" FontSize="14" Content="Поиск" Click="DishSearchButton_Click"/>
+                    <Button x:Name="DishResetButton" Margin="0,10,0,0" Height="26" FontSize="14" Content="Сброс поиска" Click="DishResetButton_Click"/>
                 </StackPanel>
 
             </StackPanel>
