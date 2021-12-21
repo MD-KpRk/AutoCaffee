@@ -41,12 +41,14 @@ namespace AutoCaffee.Pages
         void SwitchSearchPanel(Tables tableForSearch)
         {
             DisableAllSearchElements();
-            switch(tableForSearch)
+            switch (tableForSearch)
             {
                 case Tables.Personal: ShowSearchPanel(SearchPersonal); break;
                 case Tables.Rols: ShowSearchPanel(SearchRole); break;
                 case Tables.Dishes: ShowSearchPanel(SearchDish); break;
                 case Tables.OrderStrings: ShowSearchPanel(SearchStrings); break;
+                case Tables.Orders: ShowSearchPanel(SearchOrders); break;
+                case Tables.Checks: ShowSearchPanel(SearchChecks); break;
             }
 
 
@@ -58,23 +60,20 @@ namespace AutoCaffee.Pages
                 SearchRole.Visibility = Visibility.Collapsed;
                 SearchDish.Visibility = Visibility.Collapsed;
                 SearchStrings.Visibility = Visibility.Collapsed;
+                SearchOrders.Visibility = Visibility.Collapsed;
+                SearchChecks.Visibility = Visibility.Collapsed;
             }
-            void ShowSearchPanel(StackPanel panel)
-            {
-                Separat.Visibility = Visibility.Visible;
-                SearchTextBlock.Visibility = Visibility.Visible;
-                panel.Visibility = Visibility.Visible;
-            }
+            void ShowSearchPanel(StackPanel panel) => Separat.Visibility = SearchTextBlock.Visibility = panel.Visibility = Visibility.Visible;
         }
 
 
 
-        enum Tables{ None = 0,Personal, Dolgs, Rols, Dishes, OrderStrings, Orders, Clients, Checks, OrderStatuses }
+        enum Tables { None = 0, Personal, Dolgs, Rols, Dishes, OrderStrings, Orders, Clients, Checks, OrderStatuses }
 
         private Tables currentTable = Tables.None;
-        Tables CurrentTable 
-        { 
-            get => currentTable;  
+        Tables CurrentTable
+        {
+            get => currentTable;
             set
             {
                 using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
@@ -82,7 +81,7 @@ namespace AutoCaffee.Pages
                     SwitchSearchPanel(value);
                     switch (value)
                     {
-                        case Tables.Personal:dg.ItemsSource = bd.Personals.Include(item => item.Dolg).Include(item => item.Rol).ToList(); break;
+                        case Tables.Personal: dg.ItemsSource = bd.Personals.Include(item => item.Dolg).Include(item => item.Rol).ToList(); break;
                         case Tables.Dolgs: dg.ItemsSource = bd.Dolgs.ToList(); break;
                         case Tables.Rols: dg.ItemsSource = bd.Rols.ToList(); break;
                         case Tables.Dishes: dg.ItemsSource = bd.Dishes.ToList(); break;
@@ -130,7 +129,7 @@ namespace AutoCaffee.Pages
             ColumnNameAttribute nameAttribute = descriptor.Attributes[typeof(ColumnNameAttribute)] as ColumnNameAttribute;
             VisibleAttribute visibleAttribute = descriptor.Attributes[typeof(VisibleAttribute)] as VisibleAttribute;
             if (nameAttribute != null) e.Column.Header = nameAttribute.Name;
-            if(visibleAttribute != null) if (visibleAttribute.visible == false) e.Column.Visibility = Visibility.Collapsed;
+            if (visibleAttribute != null) if (visibleAttribute.visible == false) e.Column.Visibility = Visibility.Collapsed;
         }
 
         public void ShowErrorBox(string errorMessage)
@@ -150,6 +149,8 @@ namespace AutoCaffee.Pages
                 ShowErrorBox("Выберите 1 элемент");
                 return;
             }
+
+
         }
 
         #region Поиск персонала
@@ -158,10 +159,10 @@ namespace AutoCaffee.Pages
             using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
             {
                 List<Personal> personals = bd.Personals.Include(item => item.Dolg).Include(item => item.Rol).ToList();
-                dg.ItemsSource = personals.Where(item =>  item.Id.ToString().Contains(ptb1.Text) && 
-                item.Firstname.ToLower().Contains(ptb2.Text.ToLower()) && item.Secondname.ToLower().Contains(ptb3.Text.ToLower()) && 
-                item.Patronymic.ToLower().Contains(ptb4.Text.ToLower()) && item.Phonenumber.ToLower().Contains(ptb5.Text.ToLower()) &&  
-                item.Dolg.ToString().ToLower().Contains(ptb6.Text.ToLower()) && item.Rol.ToString().ToLower().Contains(ptb7.Text.ToLower()) 
+                dg.ItemsSource = personals.Where(item => item.Id.ToString().Contains(ptb1.Text) &&
+                item.Firstname.ToLower().Contains(ptb2.Text.ToLower()) && item.Secondname.ToLower().Contains(ptb3.Text.ToLower()) &&
+                item.Patronymic.ToLower().Contains(ptb4.Text.ToLower()) && item.Phonenumber.ToLower().Contains(ptb5.Text.ToLower()) &&
+                item.Dolg.ToString().ToLower().Contains(ptb6.Text.ToLower()) && item.Rol.ToString().ToLower().Contains(ptb7.Text.ToLower())
                 );
             }
         }
@@ -172,7 +173,7 @@ namespace AutoCaffee.Pages
         }
         private void TextTargetUpdated(object sender, TextChangedEventArgs e)
         {
-            if(IsEmpty(ptb1) && IsEmpty(ptb2) && IsEmpty(ptb3) && IsEmpty(ptb4) && IsEmpty(ptb5) && IsEmpty(ptb6) && IsEmpty(ptb7)) CurrentTable = currentTable;
+            if (IsEmpty(ptb1) && IsEmpty(ptb2) && IsEmpty(ptb3) && IsEmpty(ptb4) && IsEmpty(ptb5) && IsEmpty(ptb6) && IsEmpty(ptb7)) CurrentTable = currentTable;
             bool IsEmpty(TextBox tb) => string.IsNullOrEmpty(tb.Text);
         }
         #endregion
@@ -183,10 +184,10 @@ namespace AutoCaffee.Pages
             using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
             {
                 List<Rol> rols = bd.Rols.ToList();
-                if (CBEnable.IsChecked == false) dg.ItemsSource = rols.Where(item=>item.Title.ToLower().Contains(rtb1.Text.ToLower()));
+                if (CBEnable.IsChecked == false) dg.ItemsSource = rols.Where(item => item.Title.ToLower().Contains(rtb1.Text.ToLower()));
                 else
                 {
-                    dg.ItemsSource = rols.Where(item=>item.Title.ToString().Contains(rtb1.Text.ToLower()) && rcb1.IsChecked == item.CanBD &&
+                    dg.ItemsSource = rols.Where(item => item.Title.ToString().Contains(rtb1.Text.ToLower()) && rcb1.IsChecked == item.CanBD &&
                     rcb2.IsChecked == item.CanRole && rcb3.IsChecked == item.CanPersonal && rcb4.IsChecked == item.CanOrder && rcb5.IsChecked == item.CanFood);
                 }
             }
@@ -218,13 +219,15 @@ namespace AutoCaffee.Pages
             using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
             {
                 List<Dish> dishes = bd.Dishes.ToList();
-                if (DCBEnable.IsChecked == false){
+                if (DCBEnable.IsChecked == false)
+                {
                     dg.ItemsSource = dishes.Where(item => item.Title.ToLower().Contains(dtb1.Text.ToLower()) &&
-                    item.Price.ToString().ToLower().Contains(dtb2.Text.ToLower().Replace(',','.')));
+                    item.Price.ToString().ToLower().Contains(dtb2.Text.ToLower().Replace('.', ',')));
                 }
-                else{
-                dg.ItemsSource = dishes.Where(item => item.Title.ToLower().Contains(dtb1.Text.ToLower()) &&
-                item.Price.ToString().ToLower().Contains(dtb2.Text.ToLower()) && item.Available == DCBEnable1.IsChecked);
+                else
+                {
+                    dg.ItemsSource = dishes.Where(item => item.Title.ToLower().Contains(dtb1.Text.ToLower()) &&
+                    item.Price.ToString().ToLower().Contains(dtb2.Text.ToLower()) && item.Available == DCBEnable1.IsChecked);
                 }
             }
         }
@@ -246,13 +249,13 @@ namespace AutoCaffee.Pages
 
                 try
                 {
-                    dg.ItemsSource = orderstrings.Where(item=>
+                    dg.ItemsSource = orderstrings.Where(item =>
                     (string.IsNullOrEmpty(stb1.Text) ? true : item.Count == Convert.ToInt32(stb1.Text)) &&
                     item.Dish.ToString().ToLower().Contains(stb2.Text.ToLower()) &&
                     (string.IsNullOrEmpty(stb3.Text) ? true : Convert.ToInt32(item.Order.ToString()) == Convert.ToInt32(stb3.Text))
                     );
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     ShowErrorBox("В поля поиска введены некорректные данные!");
                 }
@@ -268,6 +271,7 @@ namespace AutoCaffee.Pages
 
         #endregion
 
+        #region Поиск заказов
         private void OrdersResetButton_Click(object sender, RoutedEventArgs e)
         {
             otb1.Text = otb2.Text = otb3.Text = "";
@@ -280,15 +284,12 @@ namespace AutoCaffee.Pages
             {
                 bd.Orderstrings.Include(item => item.Dish).Include(item2 => item2.Order).ToList();
                 List<Order> orders = bd.Orders.Include(item => item.Orderstatus).Include(item => item.Personal).ToList();
-
                 try
                 {
-
                     dg.ItemsSource = orders.Where(item =>
                     (string.IsNullOrEmpty(otb1.Text) ? true : item.Id == Convert.ToInt32(otb1.Text)) &&
                     item.Personal.ToString().ToLower().Contains(otb2.Text.ToLower()) &&
-                    item.Orderstatus.ToString().ToLower().Contains(otb3.Text.ToLower()) 
- 
+                    item.Orderstatus.ToString().ToLower().Contains(otb3.Text.ToLower())
                     );
                 }
                 catch (Exception)
@@ -303,5 +304,42 @@ namespace AutoCaffee.Pages
             if (string.IsNullOrEmpty(otb1.Text) && string.IsNullOrEmpty(otb2.Text) && string.IsNullOrEmpty(otb3.Text))
                 CurrentTable = currentTable;
         }
+
+        #endregion
+
+        #region Поиск чеков
+        private void ChecksResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            ctb1.Text = ctb2.Text = ctb3.Text = ctb4.Text = ctb5.Text = "";
+            CurrentTable = currentTable;
+        }
+        private void ChecksSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
+            {
+                List<Check> checks = bd.Checks.Include(item => item.Order).Include(item => item.Client).ToList();
+                try
+                {
+                    dg.ItemsSource = checks.Where(item =>
+                    (string.IsNullOrEmpty(ctb1.Text) ? true : item.Id == Convert.ToInt32(ctb1.Text)) &&
+                    (string.IsNullOrEmpty(ctb2.Text) ? true : item.Totalsum == Convert.ToDouble(ctb2.Text.Replace('.', ','))) &&
+                    item.Date.ToString("MM/dd/yyyy hh:mm:ss").Replace('.','/').Contains(ctb3.Text.ToLower()) &&
+                    (string.IsNullOrEmpty(ctb4.Text) ? true : item.Order.Id == Convert.ToInt32(ctb4.Text)) &&
+                    item.Client.ToString().ToLower().Contains(ctb5.Text.ToLower())
+                    );
+                }
+                catch (Exception)
+                {
+                    ShowErrorBox("В поля поиска введены некорректные данные!");
+                }
+            }
+        }
+        private void ctb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(ctb1.Text) && string.IsNullOrEmpty(ctb2.Text) && string.IsNullOrEmpty(ctb3.Text) && string.IsNullOrEmpty(ctb4.Text) && string.IsNullOrEmpty(ctb5.Text))
+                CurrentTable = currentTable;
+        }
+        #endregion
+
     }
 }
