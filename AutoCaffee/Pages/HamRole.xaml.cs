@@ -20,11 +20,42 @@ namespace AutoCaffee.Pages
     /// </summary>
     public partial class HamRole : Page
     {
+
+        Rol SelectedItem { get; set; }
+
+        void ContextMenuShow()
+        {
+            RoleContextMenu.Width = 200;
+        }
+
+        void ContextMenuHide()
+        {
+
+        }
+
         public HamRole()
         {
             InitializeComponent();
 
-            using(AutoCaffeeBDContext bd = new AutoCaffeeBDContext())
+            using(AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
+            {
+                List<Rol> rols = bd.Rols.ToList();
+
+                //foreach (var item in rols)
+                //    dg.Items.Add(item);
+
+                dg.ItemsSource = rols;
+            }
+        }
+
+
+        private void dg_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Rol rol = dg.SelectedItem as Rol;
+
+
+            //Не забыть добавить проверку на существование выбранного предмета в бд
+
         }
     }
 }

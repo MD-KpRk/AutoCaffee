@@ -8,25 +8,89 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HamRole">
 
+    <Page.Resources>
+        <Style x:Key="WrappedColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="{Binding}"></TextBlock>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+            <Setter Property="Stylus.IsFlicksEnabled" Value="True" />
+            <Setter Property="Background" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="Orientation" Value="Vertical">
+                    <Setter Property="Width" Value="10" />
+                    <Setter Property="MinWidth" Value="10" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+    </Page.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
-            <ColumnDefinition x:Name="ContextMenu"  Width="200"/>
+            <ColumnDefinition x:Name="RoleContextMenu"  Width="200"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.Column="0" BorderBrush="#FF5F5F5F" />
+        <DataGrid x:Name="dg" Grid.Column="0" BorderBrush="#FF5F5F5F" SelectionUnit="FullRow" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" SelectionChanged="dg_SelectionChanged" FontFamily="Roboto">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="Наименование роли" Binding="{Binding Title}" />
+                <DataGridCheckBoxColumn Header="Доступ к БД" MaxWidth="80" Binding="{Binding CanBD}" />
+                <DataGridCheckBoxColumn HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Header="Управление ролями"      Width="80" MaxWidth="120" MinWidth="60" Binding="{Binding CanRole}" />
+                <DataGridCheckBoxColumn HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Header="Управление Персоналом"  Width="80" MaxWidth="120" MinWidth="60" Binding="{Binding CanPersonal}"/>
+                <DataGridCheckBoxColumn HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Header="Управление Заказами"    Width="80" MaxWidth="120" MinWidth="60" Binding="{Binding CanOrder}"/>
+                <DataGridCheckBoxColumn HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Header="Управление Блюдами"     Width="80" MaxWidth="120" MinWidth="60" Binding="{Binding CanFood}"/>
 
-        <Grid Grid.Column="1" Margin="1">
+            </DataGrid.Columns>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="MinHeight" Value="26"/>
+                </Style>
+            </DataGrid.CellStyle>
+
+        </DataGrid>
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Background="White" >
+
+        </StackPanel>
+
+        <Grid Grid.Column="1" Margin="1,1,1,1" Grid.RowSpan="2" >
             <Border Background="White">
                 <Border.Effect>
                     <DropShadowEffect Direction="180" RenderingBias="Performance" BlurRadius="5" ShadowDepth="1" Opacity="0.6"/>
                 </Border.Effect>
             </Border>
-            <Grid>
 
-            </Grid>
+            <DockPanel Margin="10" >
+                <Button Margin="0,10,0,0" DockPanel.Dock="Bottom" Height="30" Content="Скрыть панель"/>
+                <ScrollViewer DockPanel.Dock="Bottom" VerticalScrollBarVisibility="Auto">
+                    <StackPanel DockPanel.Dock="Top" >
+                        <Button Height="100"/>
+                        <Button Height="100"/>
+                        <Button Height="100"/>
+                        <Button Height="100"/>
+                        <Button Height="100"/>
+                        <Button Height="100"/>
+
+                    </StackPanel>
+
+                </ScrollViewer >
+            </DockPanel>
+
         </Grid>
 
     </Grid>
