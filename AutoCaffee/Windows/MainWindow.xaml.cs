@@ -44,7 +44,7 @@ namespace AutoCaffee
             WindowState = state;
             InitializeComponent();
             currentUser = user;
-            MainFrame.Navigate(new Pages.home(currentUser));
+            MainFrame.Navigate(new Pages.HamHome(currentUser));
         }
 
         private void DoubleAnimation_Completed(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace AutoCaffee
         private void HamHome_Click(object sender, RoutedEventArgs e) // Главная
         {
             HamPanelActive = false;
-            MainFrame.Navigate(new Pages.home(currentUser));
+            MainFrame.Navigate(new Pages.HamHome(currentUser));
         }
 
         private void HamBD_Click(object sender, RoutedEventArgs e) // База данных
@@ -78,6 +78,7 @@ namespace AutoCaffee
         private void HamRole_Click(object sender, RoutedEventArgs e) // Роли
         {
             HamPanelActive = false;
+            MainFrame.Navigate(new Pages.HamRole());
 
         }
 

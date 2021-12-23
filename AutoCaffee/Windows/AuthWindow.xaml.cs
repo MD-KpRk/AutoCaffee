@@ -22,9 +22,6 @@ using System.Security.Cryptography;
 
 namespace AutoCaffee
 {
-    /// <summary>
-    /// Логика взаимодействия для AuthWindow.xaml
-    /// </summary>
     public partial class AuthWindow : Window
     {
         public AuthWindow()
@@ -74,9 +71,7 @@ namespace AutoCaffee
                 return;
             }
             try{
-                var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();
-                var options = optionsBuilder.UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
-                using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(options)){
+                using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions)){
                     Personal User = bd.Personals.Include(u => u.Dolg).Include(item => item.Rol).Where(us => us.Phonenumber == tbNumber.Text).FirstOrDefault();
                     if (User == null){
                         ShowError("Пользователь с таким телефоном \n не найден");
@@ -113,15 +108,9 @@ namespace AutoCaffee
 
         private void Button_Click(object sender, RoutedEventArgs e) ///// DEBUG BUTTON
         {
-            var optionsBuilder = new DbContextOptionsBuilder<AutoCaffeeBDContext>();
-            var options = optionsBuilder.UseSqlServer(ConfigurationHelper.getInstance().conString).Options;
-
-
-
-            using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(options))
+            using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
             {
                 Personal User = bd.Personals.Include(u => u.Dolg).Include(item => item.Rol).Where(us => us.Id == 1).FirstOrDefault();
-
                 new MainWindow(WindowState, User).Show();
                 Close();
             }

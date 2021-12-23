@@ -3,9 +3,9 @@ using System.Windows.Media;
 
 namespace AutoCaffee.Pages
 {
-    public partial class home : Page
+    public partial class HamHome : Page
     {
-        public home(Personal User)
+        public HamHome(Personal User)
         {
             InitializeComponent();
             Rol userRole = User.Rol;

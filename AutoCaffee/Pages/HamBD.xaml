@@ -27,8 +27,7 @@
                 <TextBlock Text="Выбор таблицы" Margin="0,0,0,20" HorizontalAlignment="Center" FontSize="18" />
                 <ComboBox x:Name="cb1" Text="Выбор таблицы" Margin="10,0,10,0" FontSize="14" Height="26" VerticalContentAlignment="Center" SelectionChanged="cb1_SelectionChanged" TextOptions.TextFormattingMode="Display" />
 
-                <Button x:Name="Description" Margin="10,20,10,20" FontSize="14" Content="Подробнее" MinHeight="26" Click="Description_Click" />
-                <Separator x:Name="Separat" Margin="10,0,10,0"/>
+
                 <TextBlock x:Name="SearchTextBlock" Text="Поиск по таблице" Margin="0,10,0,0" HorizontalAlignment="Center" FontSize="16" />
 
                 <StackPanel Visibility="Collapsed" x:Name="SearchPersonal" Margin="10,10,10,0" >

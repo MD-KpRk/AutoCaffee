@@ -67,7 +67,7 @@
                 <TextBlock Text="Пароль" Style="{StaticResource TextBlockStyle}"/>
                 <PasswordBox x:Name="tbPassword" MaxLength="100"/>
                 <Button x:Name="AuthButton" Margin="190,10,10,10" Content="Вход" FontSize="16" MinWidth="80" MinHeight="25" BorderBrush="{x:Null}" Foreground="White" Background="#FF056CF2" Click="AuthButton_Click" />
-                <Button Margin="1,00,00,10" Content="DEBUG" Click="Button_Click"    />
+                <Button  Visibility="Visible" Margin="1,00,00,10" Content="DEBUG" Click="Button_Click"    />
             </StackPanel>
         </Grid>
 

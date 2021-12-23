@@ -54,7 +54,6 @@ namespace AutoCaffee.Pages
 
             void DisableAllSearchElements()
             {
-                Separat.Visibility = Visibility.Collapsed;
                 SearchTextBlock.Visibility = Visibility.Collapsed;
                 SearchPersonal.Visibility = Visibility.Collapsed;
                 SearchRole.Visibility = Visibility.Collapsed;
@@ -63,7 +62,7 @@ namespace AutoCaffee.Pages
                 SearchOrders.Visibility = Visibility.Collapsed;
                 SearchChecks.Visibility = Visibility.Collapsed;
             }
-            void ShowSearchPanel(StackPanel panel) => Separat.Visibility = SearchTextBlock.Visibility = panel.Visibility = Visibility.Visible;
+            void ShowSearchPanel(StackPanel panel) =>  SearchTextBlock.Visibility = panel.Visibility = Visibility.Visible;
         }
 
 
@@ -135,22 +134,6 @@ namespace AutoCaffee.Pages
         public void ShowErrorBox(string errorMessage)
         {
             MessageBox.Show(errorMessage, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-
-        private void Description_Click(object sender, RoutedEventArgs e)
-        {
-            if (dg.SelectedItem == null)
-            {
-                ShowErrorBox("Не выбран элемент");
-                return;
-            }
-            if (dg.SelectedItems.Count > 1)
-            {
-                ShowErrorBox("Выберите 1 элемент");
-                return;
-            }
-
-
         }
 
         #region Поиск персонала
