@@ -20,17 +20,29 @@ namespace AutoCaffee.Pages
     /// </summary>
     public partial class HamRole : Page
     {
-
-        Rol SelectedItem { get; set; }
-
-        void ContextMenuShow()
+        private int tbc;
+        public int TBCount
         {
-            RoleContextMenu.Width = 200;
+            get => tbc;
+            set
+            {
+                tbcount.Text = "Сотрудников с этой ролью: " + value;
+                tbc = value;
+            }
+        }
+
+        void ContextMenuShow(Rol role)
+        {
+            RoleContextMenu.Width = new GridLength(200);
+            //Не забыть добавить проверку на существование выбранного предмета в бд
+
+            //TBCount = role.
+
         }
 
         void ContextMenuHide()
         {
-
+            RoleContextMenu.Width = new GridLength(0);
         }
 
         public HamRole()
@@ -51,11 +63,12 @@ namespace AutoCaffee.Pages
 
         private void dg_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Rol rol = dg.SelectedItem as Rol;
+            ContextMenuShow(dg.SelectedItem as Rol);
+        }
 
-
-            //Не забыть добавить проверку на существование выбранного предмета в бд
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ContextMenuHide();
         }
     }
 }
