@@ -20,6 +20,19 @@
             </Setter>
         </Style>
 
+        
+        <Style x:Key="DataGridContentCellCentering" TargetType="{x:Type DataGridCell}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
             <Setter Property="Stylus.IsFlicksEnabled" Value="True" />
             <Setter Property="Background" Value="White"/>
@@ -34,7 +47,7 @@
 
     </Page.Resources>
 
-    <Grid>
+    <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition x:Name="RoleContextMenu"  Width="200"/>
@@ -47,11 +60,11 @@
         <DataGrid x:Name="dg" Grid.Column="0" BorderBrush="#FF5F5F5F" SelectionUnit="FullRow" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" SelectionChanged="dg_SelectionChanged" FontFamily="Roboto">
             <DataGrid.Columns >
                 <DataGridTextColumn Header="Наименование роли" Binding="{Binding Title}" />
-                <DataGridCheckBoxColumn Header="Доступ к БД" MaxWidth="80" Binding="{Binding CanBD}" />
-                <DataGridCheckBoxColumn HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Header="Управление ролями"      Width="80" MaxWidth="120" MinWidth="60" Binding="{Binding CanRole}" />
-                <DataGridCheckBoxColumn HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Header="Управление Персоналом"  Width="80" MaxWidth="120" MinWidth="60" Binding="{Binding CanPersonal}"/>
-                <DataGridCheckBoxColumn HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Header="Управление Заказами"    Width="80" MaxWidth="120" MinWidth="60" Binding="{Binding CanOrder}"/>
-                <DataGridCheckBoxColumn HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Header="Управление Блюдами"     Width="80" MaxWidth="120" MinWidth="60" Binding="{Binding CanFood}"/>
+                <DataGridCheckBoxColumn CellStyle="{StaticResource DataGridContentCellCentering}" Header="Доступ к БД" MaxWidth="80" Binding="{Binding CanBD}" />
+                <DataGridCheckBoxColumn CellStyle="{StaticResource DataGridContentCellCentering}" HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Header="Управление ролями"      Width="80" MaxWidth="120" MinWidth="60" Binding="{Binding CanRole}" />
+                <DataGridCheckBoxColumn CellStyle="{StaticResource DataGridContentCellCentering}" HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Header="Управление Персоналом"  Width="80" MaxWidth="120" MinWidth="60" Binding="{Binding CanPersonal}"/>
+                <DataGridCheckBoxColumn CellStyle="{StaticResource DataGridContentCellCentering}" HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Header="Управление Заказами"    Width="80" MaxWidth="120" MinWidth="60" Binding="{Binding CanOrder}"/>
+                <DataGridCheckBoxColumn CellStyle="{StaticResource DataGridContentCellCentering}" HeaderStyle="{StaticResource WrappedColumnHeaderStyle}" Header="Управление Блюдами"     Width="80" MaxWidth="120" MinWidth="60" Binding="{Binding CanFood}"/>
 
             </DataGrid.Columns>
 
@@ -80,9 +93,43 @@
                 <Button Margin="0,10,0,0" DockPanel.Dock="Bottom" Height="30" Content="Скрыть панель" Click="Button_Click"/>
                 <ScrollViewer DockPanel.Dock="Bottom" VerticalScrollBarVisibility="Auto">
                     <StackPanel DockPanel.Dock="Top" >
-                        <TextBlock Text="Подробности" Margin="0,10,0,10" HorizontalAlignment="Center" FontSize="14" />
+                        <TextBlock Text="Подробности" Margin="0,10,0,10" HorizontalAlignment="Center" FontSize="18" />
                         <Separator/>
-                        <TextBlock x:Name="tbcount" Text="Сотрудников с этой ролью: " TextWrapping="Wrap" Margin="0,10,0,10" HorizontalAlignment="Center" FontSize="14" />
+                        <TextBlock x:Name="tbcount" Text="Сотрудников с этой ролью: " TextWrapping="Wrap" Margin="0,10,0,10" HorizontalAlignment="Center" FontSize="14" TextAlignment="Center" />
+                        <DataGrid x:Name="dg2" GridLinesVisibility="None" SelectionUnit="FullRow" AutoGenerateColumns="False" HeadersVisibility="None" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" CanUserResizeRows="False" AlternatingRowBackground="{x:Null}" AlternationCount="2" BorderBrush="{x:Null}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Firstname}" Width="*" />
+                                <DataGridTextColumn Binding="{Binding Secondname}" Width="*" />
+                            </DataGrid.Columns>
+                            <DataGrid.CellStyle>
+                                <Style TargetType="DataGridCell">
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="Height" Value="20"/>
+                                </Style>
+                            </DataGrid.CellStyle>
+                            <DataGrid.RowStyle>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <Style.Triggers>
+                                        <Trigger Property="AlternationIndex" Value="0">
+                                            <Setter Property="Background" Value="White" />
+                                        </Trigger>
+                                        <Trigger Property="AlternationIndex" Value="1">
+                                            <Setter Property="Background" Value="WhiteSmoke" />
+                                        </Trigger>
+                                        <DataTrigger Binding="{Binding Path=Selectable}" Value="False">
+                                            <DataTrigger.Setters>
+                                                <Setter Property="Background" Value="LightGray" />
+                                            </DataTrigger.Setters>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.RowStyle>
+
+                        </DataGrid>
+
+                        <Separator Margin="0,10,0,0" />
+                        <Button Margin="0,10,0,0" Content="Редактировать права" Height="30" />
 
 
                     </StackPanel>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,8 @@ namespace AutoCaffee.Pages
             {
                 tbcount.Text = "Сотрудников с этой ролью: " + value;
                 tbc = value;
+                if (value == 0) dg2.Visibility = Visibility.Collapsed;
+                else dg2.Visibility = Visibility.Visible;
             }
         }
 
@@ -36,7 +39,8 @@ namespace AutoCaffee.Pages
             RoleContextMenu.Width = new GridLength(200);
             //Не забыть добавить проверку на существование выбранного предмета в бд
 
-            //TBCount = role.
+            TBCount = role.Personals.Count;
+            dg2.ItemsSource = role.Personals;
 
         }
 
@@ -51,6 +55,7 @@ namespace AutoCaffee.Pages
 
             using(AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
             {
+                bd.Personals.Include(item => item.Dolg).Include(item => item.Rol).ToList();
                 List<Rol> rols = bd.Rols.ToList();
 
                 //foreach (var item in rols)

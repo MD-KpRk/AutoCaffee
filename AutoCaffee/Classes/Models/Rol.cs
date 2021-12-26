@@ -26,6 +26,9 @@ namespace AutoCaffee
         [ColumnName("Блюдами")]
         public bool CanFood { get; set; }
 
+        [Visible(false)]
+        public List<Personal> Personals { get; set; } = new List<Personal>();
+
         public int CompareTo(object obj) => Title.CompareTo(obj);
         public override string ToString() => Title;
     }
