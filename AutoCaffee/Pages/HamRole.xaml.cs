@@ -36,7 +36,11 @@ namespace AutoCaffee.Pages
 
         void ContextMenuShow(Rol role)
         {
+            if (role == null) return;
+
             RoleContextMenu.Width = new GridLength(200);
+            CurrentRole.Text = role.Title;
+
             //Не забыть добавить проверку на существование выбранного предмета в бд
 
             TBCount = role.Personals.Count;
@@ -52,8 +56,12 @@ namespace AutoCaffee.Pages
         public HamRole()
         {
             InitializeComponent();
+            Update();
+        }
 
-            using(AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
+        void Update()
+        {
+            using (AutoCaffeeBDContext bd = new AutoCaffeeBDContext(ConfigurationHelper.dbContextOptions))
             {
                 bd.Personals.Include(item => item.Dolg).Include(item => item.Rol).ToList();
                 List<Rol> rols = bd.Rols.ToList();
@@ -66,6 +74,9 @@ namespace AutoCaffee.Pages
         }
 
 
+
+
+
         private void dg_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ContextMenuShow(dg.SelectedItem as Rol);
@@ -74,6 +85,13 @@ namespace AutoCaffee.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ContextMenuHide();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            ContextMenuHide();
+            Update();
+            MessageBox.Show("Данные обновлены","Информация",MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

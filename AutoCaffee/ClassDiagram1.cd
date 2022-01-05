@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AutoCaffee.ColumnNameAttribute">
+    <Position X="0.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Attributes\ColumnNameAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoCaffee.VisibleAttribute">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Classes\Attributes\VisibleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoCaffee.Client" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAgAAAAAAAQEAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Models\Client.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoCaffee.Dish" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAAAEQEAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Models\Dish.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoCaffee.Dolg" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAEQEAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Models\Dolg.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoCaffee.Orderstatus" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAEQEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Models\Orderstatus.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoCaffee.Orderstring">
+    <Position X="4" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAECAAAAAAAAAAAAAAAAAAQAAEAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Classes\Models\Orderstring.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoCaffee.Personal" BaseTypeListCollapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAECAWAAAAAAAAQEAAAAQgAAAAAAAgAAAAAgAAAAABA=</HashCode>
+      <FileName>Classes\Models\Personal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoCaffee.Rol" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECEAAAAAAAQEQEAAAACAEAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Models\Rol.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoCaffee.AutoCaffeeBDContext">
+    <Position X="5.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAgAAAAAAEAAACQAAAAAAQAgBAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Classes\AutoCaffeeBDContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoCaffee.ConfigurationHelper" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAABAAAAAAAAAAAABAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\ConfigurationHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoCaffee.AuthWindow" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAACAAAAAAAAAAQAAAEAAAAAAAAAAAAAAQEAAAA=</HashCode>
+      <FileName>Windows\AuthWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoCaffee.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CADAAAABCAgAAASEAAEAAAAABAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoCaffee.Classes.PasswordManager">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Classes\PasswordManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoCaffee.Pages.ListObject">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAQAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\HamBD.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoCaffee.Pages.HamBD" BaseTypeListCollapsed="true">
+    <Position X="11" Y="0.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="AutoCaffee.Pages.HamBD.Tables" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Pages\HamBD.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CQAAAAAAACoBgAAggMAAAAAIAABFAgiAAAAEB5ACIAA=</HashCode>
+      <FileName>Pages\HamBD.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoCaffee.Pages.HamHome" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQBAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\HamHome.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AutoCaffee.Pages.HamRole" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAEAEBAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Pages\HamRole.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="System.Windows.Controls.Page">
+    <Position X="13" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Object">
+    <Position X="8.25" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
